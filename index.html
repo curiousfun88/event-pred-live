@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G2 Live Ledger</title>
+<style>
+/* Layout: one column, status first, then the two trend charts side by side, then the table. */
+:root {
+  --bg: #f6f7f4; --panel: #ffffff; --fg: #1d2420; --muted: #5d6862; --line: #dde2dc; --grid: #e9ece8;
+  --ok: #1f7a4c; --bad: #b3372b; --warn: #a66a00; --accent: #2457a6;
+  --s1: #2457a6; --s2: #c2662d; --s3: #6b8e23; --s4: #8a4fb0; --s5: #7d7d7d; --s6: #b3372b;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #131715; --panel: #1b201d; --fg: #e5ebe6; --muted: #9aa59e; --line: #2c332f; --grid: #232926;
+          --ok: #5cc28f; --bad: #e57a6c; --warn: #e0a640; --accent: #7aa7ef;
+          --s1: #7aa7ef; --s2: #e89a63; --s3: #a8c95a; --s4: #c39be0; --s5: #a5a5a5; --s6: #e57a6c; color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans); font-variant-numeric: tabular-nums; }
+main { max-width: 1100px; margin: 0 auto; padding: 28px max(16px, env(safe-area-inset-left)) 48px max(16px, env(safe-area-inset-right));
+       display: flex; flex-direction: column; gap: 22px; }
+h1 { font: 400 30px/1.2 var(--serif); margin: 0; }
+h2 { font-size: 15px; font-weight: 600; margin: 0; }
+.lede { color: var(--muted); margin: 6px 0 0; max-width: 72ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 13px; color: var(--muted); background: var(--panel); }
+.chip b { color: var(--fg); font-weight: 600; }
+.chip.ok b { color: var(--ok); }
+.chip.late b { color: var(--warn); }
+.note { display: flex; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px;
+        font-size: 13px; color: var(--muted); max-width: 80ch; }
+.note::before { content: ""; flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--warn); }
+.note b { color: var(--fg); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.card p { margin: 0; font-size: 13px; color: var(--muted); }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 3px; border-radius: 2px; display: inline-block; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px;
+       font-size: 12px; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,.12); z-index: 2; }
+.tip .t { color: var(--muted); margin-bottom: 2px; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { padding: 6px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+tr.hl td { font-weight: 600; }
+.pos { color: var(--ok); } .neg { color: var(--bad); }
+footer { font-size: 12px; color: var(--muted); }
+footer a { color: var(--accent); }
+.err { color: var(--bad); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>G2 live ledger</h1>
+    <p class="lede">Live paper trading of the G2 market-making strategy and its baselines on Kalshi. Each strategy's P&amp;L is cumulative from the start hour: realised on settled markets plus open positions at the latest mid-price, with pessimistic fills, net of fees. This page reads the hourly ledger backup and reloads every 10 minutes. Times are in your local time.</p>
+  </header>
+
+  <div class="chips" id="chips"><span class="chip">Loading…</span></div>
+
+  <div class="note"><span><b>Early results move a lot.</b> Most positions are still open, so totals mainly follow market prices. The pre-registered verdicts use settled events only and are computed at the cuts on 28 October and 11 November.</span></div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Cumulative P&amp;L by strategy</h2>
+      <p>Realised plus unrealised, US dollars, at each hourly entry.</p>
+      <div class="legend" id="legend1"></div>
+      <div class="chart" id="chart1"></div>
+    </section>
+    <section class="card">
+      <h2>G2 minus random selection</h2>
+      <p>The pre-registered skill test: G2's total P&amp;L minus random selection at the same posting share. Above zero means G2 is ahead.</p>
+      <div class="chart" id="chart2"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Latest entry, every strategy</h2>
+    <div class="tablewrap">
+      <table id="table"><thead><tr><th>Strategy</th><th>Total</th><th>Realised</th><th>Unrealised</th><th>Capital</th><th>Fills</th></tr></thead><tbody></tbody></table>
+    </div>
+    <p>"Liquid only" equals "Quote all" in the live universe (amendment L17); "Liquid (traded markets)" joined the ledger on 16 Oct 06:00 UTC; "G2 selected categories" trades from 18 Oct.</p>
+  </section>
+
+  <footer id="foot">Data: <a href="https://github.com/curiousfun88/event-pred-live">event-pred-live</a> (ledger, hash chain and OpenTimestamps receipts). Rules and amendments: <a href="https://github.com/curiousfun88/event-pred">event-pred</a>, docs/planning/lumid-forward-test-preregistration.md.</footer>
+</main>
+
+<script>
+(function () {
+  var MAIN = [["G2", "--s1"], ["Linear", "--s2"], ["Neural", "--s4"], ["G", "--s3"], ["Random (same share)", "--s5"], ["Quote all", "--s6"]];
+  var css = function (v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); };
+  var usd = function (v) { return (v < 0 ? "−$" : "+$") + Math.abs(v).toLocaleString(undefined, { maximumFractionDigits: 0 }); };
+  var usd0 = function (v) { return "$" + v.toLocaleString(undefined, { maximumFractionDigits: 0 }); };
+  var toDate = function (H) { return new Date(Date.UTC(+H.slice(0, 4), +H.slice(4, 6) - 1, +H.slice(6, 8), +H.slice(9, 11))); };
+  var fmtH = function (H, long) {
+    var d = toDate(H);
+    return long ? d.toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })
+                : d.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+  };
+  var el = function (tag, attrs, text) { var e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; return e; };
+
+  function lineChart(box, hours, series, opts) {
+    box.replaceChildren();
+    var W = Math.max(320, box.clientWidth || 600), H = 260, M = { l: 60, r: 12, t: 10, b: 28 };
+    var ys = [0]; series.forEach(function (s) { s.pts.forEach(function (p) { ys.push(p); }); });
+    var lo = Math.min.apply(null, ys), hi = Math.max.apply(null, ys); if (lo === hi) { lo -= 1; hi += 1; }
+    var pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
+    var x = function (i) { return M.l + (hours.length < 2 ? 0 : i * (W - M.l - M.r) / (hours.length - 1)); };
+    var y = function (v) { return M.t + (hi - v) * (H - M.t - M.b) / (hi - lo); };
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, role: "img" });
+    var step = Math.pow(10, Math.floor(Math.log10((hi - lo) / 4))); var ticks = [];
+    [1, 2, 5, 10].some(function (m) { if ((hi - lo) / (step * m) <= 6) { step *= m; return true; } return false; });
+    for (var t = Math.ceil(lo / step) * step; t <= hi; t += step) ticks.push(t);
+    ticks.forEach(function (t) {
+      svg.appendChild(el("line", { x1: M.l, x2: W - M.r, y1: y(t), y2: y(t), stroke: css(t === 0 ? "--muted" : "--grid"), "stroke-width": t === 0 ? 1.2 : 1 }));
+      svg.appendChild(el("text", { x: M.l - 8, y: y(t), "text-anchor": "end", "dominant-baseline": "middle", fill: css("--muted"), "font-size": 11 }, usd(Math.round(t))));
+    });
+    var every = Math.max(1, Math.ceil(hours.length / 6));
+    hours.forEach(function (h, i) { if (i % every === 0 || i === hours.length - 1) svg.appendChild(el("text", { x: x(i), y: H - 8, "text-anchor": "middle", fill: css("--muted"), "font-size": 11 }, fmtH(h))); });
+    series.forEach(function (s) {
+      var d = s.pts.map(function (v, i) { return (i ? "L" : "M") + x(i).toFixed(1) + " " + y(v).toFixed(1); }).join(" ");
+      svg.appendChild(el("path", { d: d, fill: "none", stroke: s.color, "stroke-width": s.w || 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+      var n = s.pts.length - 1; if (n >= 0) svg.appendChild(el("circle", { cx: x(n), cy: y(s.pts[n]), r: 3.5, fill: s.color }));
+    });
+    var tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true;
+    var hit = el("rect", { x: M.l, y: 0, width: W - M.l - M.r, height: H - M.b, fill: "transparent" });
+    var guide = el("line", { y1: M.t, y2: H - M.b, stroke: css("--muted"), "stroke-dasharray": "3 3", visibility: "hidden" });
+    svg.appendChild(guide); svg.appendChild(hit);
+    hit.addEventListener("mousemove", function (ev) {
+      var r = svg.getBoundingClientRect(), mx = (ev.clientX - r.left) * W / r.width;
+      var i = Math.max(0, Math.min(hours.length - 1, Math.round((mx - M.l) / ((W - M.l - M.r) / Math.max(1, hours.length - 1)))));
+      guide.setAttribute("x1", x(i)); guide.setAttribute("x2", x(i)); guide.setAttribute("visibility", "visible");
+      tip.replaceChildren(); var t0 = document.createElement("div"); t0.className = "t"; t0.textContent = fmtH(hours[i], true); tip.appendChild(t0);
+      series.forEach(function (s) { var d = document.createElement("div"); d.textContent = s.name + ": " + usd(s.pts[i]); d.style.color = s.color; tip.appendChild(d); });
+      tip.hidden = false;
+      var bx = box.getBoundingClientRect(), left = ev.clientX - bx.left + 14;
+      tip.style.left = Math.min(left, box.clientWidth - tip.offsetWidth - 4) + "px"; tip.style.top = Math.max(0, ev.clientY - bx.top - tip.offsetHeight - 10) + "px";
+    });
+    hit.addEventListener("mouseleave", function () { tip.hidden = true; guide.setAttribute("visibility", "hidden"); });
+    box.appendChild(svg); box.appendChild(tip);
+  }
+
+  function render(s) {
+    var hours = Array.from(new Set(s.rows.map(function (r) { return r.H; }))).sort();
+    var val = function (arm, h) { var r = s.rows.find(function (q) { return q.arm === arm && q.H === h; }); return r ? r.total_usd : null; };
+    var chips = document.getElementById("chips"); chips.replaceChildren();
+    var lagH = s.latest_producer_hour ? (Date.now() - toDate(s.latest_producer_hour).getTime()) / 3.6e6 : null;
+    [["Live since", s.live_since ? fmtH(s.live_since, true) : "—", ""], ["Hourly entries", String(s.entries), ""],
+     ["Latest entry", s.latest_entry ? fmtH(s.latest_entry, true) : "—", ""],
+     ["Latest producer hour", s.latest_producer_hour ? fmtH(s.latest_producer_hour, true) : "—", lagH != null && lagH > 2.5 ? "late" : ""],
+     ["G2 events settled", s.g2_settled_events == null ? "—" : String(s.g2_settled_events), ""],
+     ["Ledger check issues", String(s.verification_issues), s.verification_issues === 0 ? "ok" : "late"]].forEach(function (c) {
+      var sp = document.createElement("span"); sp.className = "chip " + c[2]; sp.append(c[0] + " "); var b = document.createElement("b"); b.textContent = c[1]; sp.appendChild(b); chips.appendChild(sp);
+    });
+    var series = MAIN.map(function (m) { return { name: m[0], color: css(m[1]), w: m[0] === "G2" ? 2.6 : 1.8, pts: hours.map(function (h) { var v = val(m[0], h); return v == null ? 0 : v; }) }; })
+                     .filter(function (sr) { return s.rows.some(function (r) { return r.arm === sr.name; }); });
+    var lg = document.getElementById("legend1"); lg.replaceChildren();
+    series.forEach(function (sr) { var sp = document.createElement("span"); var i = document.createElement("i"); i.style.background = sr.color; sp.appendChild(i); sp.append(sr.name); lg.appendChild(sp); });
+    lineChart(document.getElementById("chart1"), hours, series);
+    lineChart(document.getElementById("chart2"), hours, [{ name: "G2 − Random", color: css("--s1"), w: 2.6,
+      pts: hours.map(function (h) { return (val("G2", h) || 0) - (val("Random (same share)", h) || 0); }) }]);
+    var last = hours[hours.length - 1], tb = document.querySelector("#table tbody"); tb.replaceChildren();
+    s.rows.filter(function (r) { return r.H === last; }).sort(function (a, b) { return b.total_usd - a.total_usd; }).forEach(function (r) {
+      var tr = document.createElement("tr"); if (r.arm === "G2") tr.className = "hl";
+      [[r.arm, ""], [usd(r.total_usd), r.total_usd > 0 ? "pos" : r.total_usd < 0 ? "neg" : ""], [usd(r.realised_usd), r.realised_usd > 0 ? "pos" : r.realised_usd < 0 ? "neg" : ""],
+       [usd(r.unrealised_usd), r.unrealised_usd > 0 ? "pos" : r.unrealised_usd < 0 ? "neg" : ""], [usd0(r.capital_usd), ""], [r.fills.toLocaleString(), ""]].forEach(function (c) {
+        var td = document.createElement("td"); td.textContent = c[0]; if (c[1]) td.className = c[1]; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+
+  var data = null;
+  function load() {
+    fetch("site/summary.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (s) { data = s; render(s); })
+      .catch(function (e) { var c = document.getElementById("chips"); c.replaceChildren(); var sp = document.createElement("span"); sp.className = "chip err"; sp.textContent = "Could not load the ledger summary (" + e.message + "). It retries every 10 minutes."; c.appendChild(sp); });
+  }
+  load(); setInterval(load, 600000);
+  var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { if (data) render(data); }, 150); });
+  if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { if (data) render(data); });
+})();
+</script>
+</body>
+</html>

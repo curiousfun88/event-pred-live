@@ -1,0 +1,25 @@
+name: live-test-staleness
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail if the live test has stopped
+        run: |
+          python3 - <<'PY'
+          import json, sys, datetime as dt
+          hb = json.load(open("heartbeat.json"))
+          now = dt.datetime.now(dt.timezone.utc)
+          age = lambda h: (now - dt.datetime.strptime(h, "%Y%m%dT%H").replace(tzinfo=dt.timezone.utc)).total_seconds() / 60
+          p, l = age(hb["latest_producer_hour"]), age(hb["latest_ledger_entry"]) if hb.get("latest_ledger_entry") else 1e9
+          print(json.dumps(hb), f"producer hour age {p:.0f} min, ledger entry age {l:.0f} min")
+          bad = []
+          if p > 150: bad.append(f"no new producer hour for {p:.0f} min")
+          if l > 480: bad.append(f"no new ledger entry for {l:.0f} min")
+          if bad:
+              print("::error::LIVE TEST STALLED: " + "; ".join(bad)); sys.exit(1)
+          PY

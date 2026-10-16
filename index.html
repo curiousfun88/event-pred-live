@@ -70,6 +70,19 @@ footer a { color: var(--accent); }
 
   <div class="grid">
     <section class="card">
+      <h2>Main result: the 23 training series</h2>
+      <p>Settled positions only, on the 23 series every backtest used (amendment L18, decided after the first day of live results).</p>
+      <div class="tablewrap"><table id="t23"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section class="card">
+      <h2>Full universe (pre-registered headline)</h2>
+      <p>Settled positions only, on every series the strategy quotes (amendment L4, fixed before any live result), mostly unseen in training.</p>
+      <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </div>
+
+  <div class="grid">
+    <section class="card">
       <h2>Cumulative P&amp;L by strategy</h2>
       <p>Realised plus unrealised, US dollars, at each hourly entry.</p>
       <div class="legend" id="legend1"></div>
@@ -83,7 +96,7 @@ footer a { color: var(--accent); }
   </div>
 
   <section class="card">
-    <h2>Latest entry, every strategy</h2>
+    <h2>Latest entry, every strategy (full universe, including open positions)</h2>
     <div class="tablewrap">
       <table id="table"><thead><tr><th>Strategy</th><th>Total</th><th>Realised</th><th>Unrealised</th><th>Capital</th><th>Fills</th></tr></thead><tbody></tbody></table>
     </div>
@@ -167,6 +180,18 @@ footer a { color: var(--accent); }
     lineChart(document.getElementById("chart1"), hours, series);
     lineChart(document.getElementById("chart2"), hours, [{ name: "G2 − Random", color: css("--s1"), w: 2.6,
       pts: hours.map(function (h) { return (val("G2", h) || 0) - (val("Random (same share)", h) || 0); }) }]);
+    [["train23", "t23"], ["full", "tfull"]].forEach(function (u) {
+      var body = document.querySelector("#" + u[1] + " tbody"); body.replaceChildren();
+      (s.settled || []).filter(function (r) { return r.universe === u[0]; }).sort(function (a, b) { return b.net_usd - a.net_usd; }).forEach(function (r) {
+        var tr = document.createElement("tr"); if (r.arm === "G2") tr.className = "hl";
+        var rp = r.return_pct == null ? "—" : (r.return_pct > 0 ? "+" : "") + r.return_pct.toFixed(1) + "%";
+        [[r.arm, ""], [usd(r.net_usd), r.net_usd > 0 ? "pos" : r.net_usd < 0 ? "neg" : ""], [rp, r.return_pct > 0 ? "pos" : r.return_pct < 0 ? "neg" : ""],
+         [r.settled_fills.toLocaleString(), ""], [r.events.toLocaleString(), ""]].forEach(function (c) {
+          var td = document.createElement("td"); td.textContent = c[0]; if (c[1]) td.className = c[1]; tr.appendChild(td);
+        });
+        body.appendChild(tr);
+      });
+    });
     var last = hours[hours.length - 1], tb = document.querySelector("#table tbody"); tb.replaceChildren();
     s.rows.filter(function (r) { return r.H === last; }).sort(function (a, b) { return b.total_usd - a.total_usd; }).forEach(function (r) {
       var tr = document.createElement("tr"); if (r.arm === "G2") tr.className = "hl";

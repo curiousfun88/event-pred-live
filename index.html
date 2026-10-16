@@ -43,6 +43,10 @@ h2 { font-size: 15px; font-weight: 600; margin: 0; }
 .sechead h2 { font: 400 22px/1.2 var(--serif); }
 .sechead p { margin: 0; color: var(--muted); font-size: 14px; max-width: 75ch; }
 .empty { color: var(--muted); font-size: 13px; padding: 8px 0; }
+details summary { cursor: pointer; list-style: revert; }
+details summary .sub { color: var(--muted); font-size: 13px; margin-left: 6px; }
+details[open] summary { margin-bottom: 8px; }
+details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .card p { margin: 0; font-size: 13px; color: var(--muted); }
@@ -97,48 +101,26 @@ footer a { color: var(--accent); }
     </section>
   </div>
 
-  <section class="sechead" id="secondary">
-    <h2>Secondary: does the edge generalise?</h2>
-    <p>Every series the strategy quotes, mostly unseen in training. The full universe from the start was the original headline, fixed before the start; the same-hours table matches the main result's window.</p>
-  </section>
-  <div class="grid">
-    <section class="card">
-      <h2>Full universe, same hours as the main result</h2>
-      <div class="tablewrap"><table id="tsame"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
-    </section>
-    <section class="card">
-      <h2>Full universe, from the start (15 Oct 19:00 UTC)</h2>
-      <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
-    </section>
-  </div>
-  <div class="grid">
-    <section class="card">
-      <h2>Full universe: cumulative P&amp;L by strategy</h2>
-      <p>Realised plus unrealised, US dollars, every hourly entry from the start.</p>
-      <div class="legend" id="legend1"></div>
-      <div class="chart" id="chart1"></div>
-    </section>
-    <section class="card">
-      <h2>Full universe: G2 minus random selection</h2>
-      <p>G2's total P&amp;L minus random selection at the same posting share. Above zero means G2 is ahead.</p>
-      <div class="chart" id="chart2"></div>
-    </section>
-  </div>
-
-  <section class="card">
-    <h2>Full universe: latest entry, every strategy (including open positions)</h2>
-    <div class="tablewrap">
-      <table id="table"><thead><tr><th>Strategy</th><th>Total</th><th>Realised</th><th>Unrealised</th><th>Capital</th><th>Fills</th></tr></thead><tbody></tbody></table>
+  <details class="card" id="secondary">
+    <summary><b>Show generalisation results (full universe)</b> <span class="sub">secondary test: every series the strategy quotes, mostly unseen in training</span></summary>
+    <p>The full universe from the start was the original headline, fixed before the start; the same-hours table matches the main result's window. Settled positions only.</p>
+    <div class="grid">
+      <section>
+        <h2>Same hours as the main result</h2>
+        <div class="tablewrap"><table id="tsame"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+      </section>
+      <section>
+        <h2>From the start (15 Oct 19:00 UTC)</h2>
+        <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+      </section>
     </div>
-    <p>"Liquid only" equals "Quote all" in the live universe (amendment L17); "Liquid (traded markets)" joined the ledger on 16 Oct 06:00 UTC; "G2 selected categories" trades from 18 Oct. Three entries (16 Oct 08:00-10:00 UTC) note that "Liquid (traded markets)" was compared on hours before it joined, with nothing recorded missing; a check artefact, fixed since.</p>
-  </section>
+  </details>
 
   <footer id="foot">Data: <a href="https://github.com/curiousfun88/event-pred-live">event-pred-live</a> (ledger, hash chain and OpenTimestamps receipts). Rules and amendments: <a href="https://github.com/curiousfun88/event-pred">event-pred</a>, docs/planning/lumid-forward-test-preregistration.md.</footer>
 </main>
 
 <script>
 (function () {
-  var MAIN = [["G2", "--s1"], ["Linear", "--s2"], ["Neural", "--s4"], ["G", "--s3"], ["Random (same share)", "--s5"], ["Quote all", "--s6"]];
   var css = function (v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); };
   var usd = function (v) { return (v < 0 ? "−$" : "+$") + Math.abs(v).toLocaleString(undefined, { maximumFractionDigits: 0 }); };
   var usd0 = function (v) { return "$" + v.toLocaleString(undefined, { maximumFractionDigits: 0 }); };
@@ -192,24 +174,14 @@ footer a { color: var(--accent); }
   }
 
   function render(s) {
-    var hours = Array.from(new Set(s.rows.map(function (r) { return r.H; }))).sort();
-    var val = function (arm, h) { var r = s.rows.find(function (q) { return q.arm === arm && q.H === h; }); return r ? r.total_usd : null; };
     var chips = document.getElementById("chips"); chips.replaceChildren();
     var lagH = s.latest_producer_hour ? (Date.now() - toDate(s.latest_producer_hour).getTime()) / 3.6e6 : null;
     [["Live since", s.live_since ? fmtH(s.live_since, true) : "—", ""], ["Hourly entries", String(s.entries), ""],
      ["Latest entry", s.latest_entry ? fmtH(s.latest_entry, true) : "—", ""],
      ["Latest producer hour", s.latest_producer_hour ? fmtH(s.latest_producer_hour, true) : "—", lagH != null && lagH > 2.5 ? "late" : ""],
-     ["G2 events settled", s.g2_settled_events == null ? "—" : String(s.g2_settled_events), ""],
      ["Ledger check issues", String(s.verification_issues), s.verification_issues === 0 ? "ok" : "late"]].forEach(function (c) {
       var sp = document.createElement("span"); sp.className = "chip " + c[2]; sp.append(c[0] + " "); var b = document.createElement("b"); b.textContent = c[1]; sp.appendChild(b); chips.appendChild(sp);
     });
-    var series = MAIN.map(function (m) { return { name: m[0], color: css(m[1]), w: m[0] === "G2" ? 2.6 : 1.8, pts: hours.map(function (h) { var v = val(m[0], h); return v == null ? 0 : v; }) }; })
-                     .filter(function (sr) { return s.rows.some(function (r) { return r.arm === sr.name; }); });
-    var lg = document.getElementById("legend1"); lg.replaceChildren();
-    series.forEach(function (sr) { var sp = document.createElement("span"); var i = document.createElement("i"); i.style.background = sr.color; sp.appendChild(i); sp.append(sr.name); lg.appendChild(sp); });
-    lineChart(document.getElementById("chart1"), hours, series);
-    lineChart(document.getElementById("chart2"), hours, [{ name: "G2 − Random", color: css("--s1"), w: 2.6,
-      pts: hours.map(function (h) { return (val("G2", h) || 0) - (val("Random (same share)", h) || 0); }) }]);
     var st = s.settled || [], pick = function (u, a) { return st.find(function (r) { return r.universe === u && r.arm === a; }); };
     var mg = pick("train23", "G2"), mr = pick("train23", "Random (same share)");
     var kp = document.getElementById("mainkpis"); kp.replaceChildren();
@@ -248,15 +220,6 @@ footer a { color: var(--accent); }
         });
         body.appendChild(tr);
       });
-    });
-    var last = hours[hours.length - 1], tb = document.querySelector("#table tbody"); tb.replaceChildren();
-    s.rows.filter(function (r) { return r.H === last; }).sort(function (a, b) { return b.total_usd - a.total_usd; }).forEach(function (r) {
-      var tr = document.createElement("tr"); if (r.arm === "G2") tr.className = "hl";
-      [[r.arm, ""], [usd(r.total_usd), r.total_usd > 0 ? "pos" : r.total_usd < 0 ? "neg" : ""], [usd(r.realised_usd), r.realised_usd > 0 ? "pos" : r.realised_usd < 0 ? "neg" : ""],
-       [usd(r.unrealised_usd), r.unrealised_usd > 0 ? "pos" : r.unrealised_usd < 0 ? "neg" : ""], [usd0(r.capital_usd), ""], [r.fills.toLocaleString(), ""]].forEach(function (c) {
-        var td = document.createElement("td"); td.textContent = c[0]; if (c[1]) td.className = c[1]; tr.appendChild(td);
-      });
-      tb.appendChild(tr);
     });
   }
 

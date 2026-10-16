@@ -71,13 +71,18 @@ footer a { color: var(--accent); }
   <div class="grid">
     <section class="card">
       <h2>Main result: the 23 training series</h2>
-      <p>Settled positions only, on the 23 series the strategy was trained and backtested on (amendment L18), counting quoting hours from 17 Oct 2026 00:00 UTC.</p>
+      <p>Settled positions only, on the 23 series the strategy was trained and backtested on (amendment L18), counting quoting hours from 16 Oct 2026 17:00 UTC.</p>
       <div class="tablewrap"><table id="t23"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
     </section>
     <section class="card">
       <h2>Full universe: does the edge generalise?</h2>
       <p>Settled positions only, on every series the strategy quotes, mostly unseen in training. Secondary test; this was the headline fixed before the start (L4).</p>
       <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section class="card">
+      <h2>Full universe, same hours as the main result</h2>
+      <p>Settled positions only, every series, counting quoting hours from 16 Oct 2026 17:00 UTC: the like-for-like comparison with the main result. Descriptive.</p>
+      <div class="tablewrap"><table id="tsame"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
     </section>
   </div>
 
@@ -180,7 +185,7 @@ footer a { color: var(--accent); }
     lineChart(document.getElementById("chart1"), hours, series);
     lineChart(document.getElementById("chart2"), hours, [{ name: "G2 − Random", color: css("--s1"), w: 2.6,
       pts: hours.map(function (h) { return (val("G2", h) || 0) - (val("Random (same share)", h) || 0); }) }]);
-    [["train23", "t23"], ["full", "tfull"]].forEach(function (u) {
+    [["train23", "t23"], ["full", "tfull"], ["full_same", "tsame"]].forEach(function (u) {
       var body = document.querySelector("#" + u[1] + " tbody"); body.replaceChildren();
       (s.settled || []).filter(function (r) { return r.universe === u[0]; }).sort(function (a, b) { return b.net_usd - a.net_usd; }).forEach(function (r) {
         var tr = document.createElement("tr"); if (r.arm === "G2") tr.className = "hl";

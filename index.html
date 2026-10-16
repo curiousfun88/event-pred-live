@@ -34,6 +34,15 @@ h2 { font-size: 15px; font-weight: 600; margin: 0; }
         font-size: 13px; color: var(--muted); max-width: 80ch; }
 .note::before { content: ""; flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--warn); }
 .note b { color: var(--fg); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 12px; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.kpi .lab { font-size: 12px; color: var(--muted); }
+.kpi .val { font: 400 28px/1.15 var(--serif); }
+.kpi .sub { font-size: 12px; color: var(--muted); }
+.sechead { display: flex; flex-direction: column; gap: 4px; margin-top: 10px; }
+.sechead h2 { font: 400 22px/1.2 var(--serif); }
+.sechead p { margin: 0; color: var(--muted); font-size: 14px; max-width: 75ch; }
+.empty { color: var(--muted); font-size: 13px; padding: 8px 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .card p { margin: 0; font-size: 13px; color: var(--muted); }
@@ -61,51 +70,67 @@ footer a { color: var(--accent); }
 <main>
   <header>
     <h1>G2 live ledger</h1>
-    <p class="lede">Live paper trading of the G2 market-making strategy and its baselines on Kalshi. Each strategy's P&amp;L is cumulative from the start hour: realised on settled markets plus open positions at the latest mid-price, with pessimistic fills, net of fees. This page reads the hourly ledger backup and reloads every 10 minutes. Times are in your local time.</p>
+    <p class="lede">Live paper trading of the G2 market-making strategy and its baselines on Kalshi. The main result is G2 on the 23 series it was trained and backtested on; the full universe of markets is a secondary test of generalisation. This page reads the hourly ledger backup and reloads every 10 minutes. Times are in your local time.</p>
   </header>
 
   <div class="chips" id="chips"><span class="chip">Loading…</span></div>
 
   <div class="note"><span><b>Early results move a lot.</b> Most positions are still open, so totals mainly follow market prices. The pre-registered verdicts use settled events only and are computed at the cuts on 28 October and 11 November.</span></div>
 
+  <section class="sechead" id="main">
+    <h2>Main result: the 23 backtested series</h2>
+    <p>The 23 series the strategy was trained and backtested on (amendment L18), counting quoting hours from 16 Oct 2026 17:00 UTC. Settled positions only, pessimistic fills, net of fees.</p>
+  </section>
+  <div class="kpis" id="mainkpis"></div>
   <div class="grid">
     <section class="card">
-      <h2>Main result: the 23 training series</h2>
-      <p>Settled positions only, on the 23 series the strategy was trained and backtested on (amendment L18), counting quoting hours from 16 Oct 2026 17:00 UTC.</p>
+      <h2>Every strategy</h2>
       <div class="tablewrap"><table id="t23"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+      <p class="empty" id="t23empty" hidden>No settled positions yet in the main result. It fills in as markets settle.</p>
     </section>
     <section class="card">
-      <h2>Full universe: does the edge generalise?</h2>
-      <p>Settled positions only, on every series the strategy quotes, mostly unseen in training. Secondary test; this was the headline fixed before the start (L4).</p>
-      <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
-    </section>
-    <section class="card">
-      <h2>Full universe, same hours as the main result</h2>
-      <p>Settled positions only, every series, counting quoting hours from 16 Oct 2026 17:00 UTC: the like-for-like comparison with the main result. Descriptive.</p>
-      <div class="tablewrap"><table id="tsame"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+      <h2>Main result over time</h2>
+      <p>Total P&amp;L (settled plus open positions at the latest mid) at each hourly entry.</p>
+      <div class="legend" id="legendm"></div>
+      <div class="chart" id="chartm"></div>
+      <p class="empty" id="chartmempty" hidden>Starts with the first ledger entries that record the main result.</p>
     </section>
   </div>
 
+  <section class="sechead" id="secondary">
+    <h2>Secondary: does the edge generalise?</h2>
+    <p>Every series the strategy quotes, mostly unseen in training. The full universe from the start was the original headline, fixed before the start; the same-hours table matches the main result's window.</p>
+  </section>
   <div class="grid">
     <section class="card">
-      <h2>Cumulative P&amp;L by strategy</h2>
-      <p>Realised plus unrealised, US dollars, at each hourly entry.</p>
+      <h2>Full universe, same hours as the main result</h2>
+      <div class="tablewrap"><table id="tsame"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section class="card">
+      <h2>Full universe, from the start (15 Oct 19:00 UTC)</h2>
+      <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </div>
+  <div class="grid">
+    <section class="card">
+      <h2>Full universe: cumulative P&amp;L by strategy</h2>
+      <p>Realised plus unrealised, US dollars, every hourly entry from the start.</p>
       <div class="legend" id="legend1"></div>
       <div class="chart" id="chart1"></div>
     </section>
     <section class="card">
-      <h2>G2 minus random selection</h2>
-      <p>The pre-registered skill test: G2's total P&amp;L minus random selection at the same posting share. Above zero means G2 is ahead.</p>
+      <h2>Full universe: G2 minus random selection</h2>
+      <p>G2's total P&amp;L minus random selection at the same posting share. Above zero means G2 is ahead.</p>
       <div class="chart" id="chart2"></div>
     </section>
   </div>
 
   <section class="card">
-    <h2>Latest entry, every strategy (full universe, including open positions)</h2>
+    <h2>Full universe: latest entry, every strategy (including open positions)</h2>
     <div class="tablewrap">
       <table id="table"><thead><tr><th>Strategy</th><th>Total</th><th>Realised</th><th>Unrealised</th><th>Capital</th><th>Fills</th></tr></thead><tbody></tbody></table>
     </div>
-    <p>"Liquid only" equals "Quote all" in the live universe (amendment L17); "Liquid (traded markets)" joined the ledger on 16 Oct 06:00 UTC; "G2 selected categories" trades from 18 Oct. Ledger check issues count every strategy; three entries (16 Oct 08:00-10:00 UTC) also note that "Liquid (traded markets)" was compared on hours before it joined, with nothing recorded missing. That was a check artefact, fixed since.</p>
+    <p>"Liquid only" equals "Quote all" in the live universe (amendment L17); "Liquid (traded markets)" joined the ledger on 16 Oct 06:00 UTC; "G2 selected categories" trades from 18 Oct. Three entries (16 Oct 08:00-10:00 UTC) note that "Liquid (traded markets)" was compared on hours before it joined, with nothing recorded missing; a check artefact, fixed since.</p>
   </section>
 
   <footer id="foot">Data: <a href="https://github.com/curiousfun88/event-pred-live">event-pred-live</a> (ledger, hash chain and OpenTimestamps receipts). Rules and amendments: <a href="https://github.com/curiousfun88/event-pred">event-pred</a>, docs/planning/lumid-forward-test-preregistration.md.</footer>
@@ -185,6 +210,33 @@ footer a { color: var(--accent); }
     lineChart(document.getElementById("chart1"), hours, series);
     lineChart(document.getElementById("chart2"), hours, [{ name: "G2 − Random", color: css("--s1"), w: 2.6,
       pts: hours.map(function (h) { return (val("G2", h) || 0) - (val("Random (same share)", h) || 0); }) }]);
+    var st = s.settled || [], pick = function (u, a) { return st.find(function (r) { return r.universe === u && r.arm === a; }); };
+    var mg = pick("train23", "G2"), mr = pick("train23", "Random (same share)");
+    var kp = document.getElementById("mainkpis"); kp.replaceChildren();
+    var tile = function (lab, val, sub, cls) {
+      var d = document.createElement("div"); d.className = "kpi";
+      var a = document.createElement("span"); a.className = "lab"; a.textContent = lab;
+      var b = document.createElement("span"); b.className = "val " + (cls || ""); b.textContent = val;
+      var c = document.createElement("span"); c.className = "sub"; c.textContent = sub;
+      d.append(a, b, c); kp.appendChild(d);
+    };
+    var pc = function (v) { return v == null ? "—" : (v > 0 ? "+" : "") + v.toFixed(1) + "%"; };
+    var sgn = function (v) { return v > 0 ? "pos" : v < 0 ? "neg" : ""; };
+    tile("G2 net P&L", mg ? usd(mg.net_usd) : "—", "settled positions", mg ? sgn(mg.net_usd) : "");
+    tile("G2 return", mg ? pc(mg.return_pct) : "—", "net over committed capital", mg ? sgn(mg.return_pct) : "");
+    tile("G2 minus random", mg && mr ? usd(mg.net_usd - mr.net_usd) : "—", mr ? "random at G2's posting share: " + usd(mr.net_usd) : "random at G2's posting share", mg && mr ? sgn(mg.net_usd - mr.net_usd) : "");
+    tile("Events settled", mg ? mg.events.toLocaleString() : "0", mg ? mg.settled_fills.toLocaleString() + " settled fills" : "no settled fills yet", "");
+    document.getElementById("t23empty").hidden = !!mg;
+    var mrows = s.main_rows || [], mh = Array.from(new Set(mrows.map(function (r) { return r.H; }))).sort();
+    var mval = function (arm, h) { var r = mrows.find(function (q) { return q.arm === arm && q.H === h; }); return r ? r.total_usd : 0; };
+    var mseries = [["G2", "--s1"], ["Linear", "--s2"], ["Random (same share)", "--s5"], ["Quote all", "--s6"]].map(function (m) {
+      return { name: m[0], color: css(m[1]), w: m[0] === "G2" ? 2.6 : 1.8, pts: mh.map(function (h) { return mval(m[0], h); }) }; });
+    var lgm = document.getElementById("legendm"); lgm.replaceChildren();
+    document.getElementById("chartmempty").hidden = mh.length > 0;
+    if (mh.length) {
+      mseries.forEach(function (sr) { var sp = document.createElement("span"); var i = document.createElement("i"); i.style.background = sr.color; sp.appendChild(i); sp.append(sr.name); lgm.appendChild(sp); });
+      lineChart(document.getElementById("chartm"), mh, mseries);
+    } else { document.getElementById("chartm").replaceChildren(); }
     [["train23", "t23"], ["full", "tfull"], ["full_same", "tsame"]].forEach(function (u) {
       var body = document.querySelector("#" + u[1] + " tbody"); body.replaceChildren();
       (s.settled || []).filter(function (r) { return r.universe === u[0]; }).sort(function (a, b) { return b.net_usd - a.net_usd; }).forEach(function (r) {

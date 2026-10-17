@@ -91,6 +91,7 @@ footer a { color: var(--accent); }
       <h2>Every strategy</h2>
       <div class="tablewrap"><table id="t23"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
       <p class="empty" id="t23empty" hidden>No settled positions yet in the main result. It fills in as markets settle.</p>
+      <p class="sub" style="margin:0;font-size:12px;color:var(--muted)">A dash means that strategy has no settled position yet in the main result; the 23 series settle over days (league matches, daily temperatures, weekly ranges).</p>
     </section>
     <section class="card">
       <h2>Main result over time</h2>
@@ -198,7 +199,7 @@ footer a { color: var(--accent); }
     tile("G2 return", mg ? pc(mg.return_pct) : "—", "net over committed capital", mg ? sgn(mg.return_pct) : "");
     tile("G2 minus random", mg && mr ? usd(mg.net_usd - mr.net_usd) : "—", mr ? "random at G2's posting share: " + usd(mr.net_usd) : "random at G2's posting share", mg && mr ? sgn(mg.net_usd - mr.net_usd) : "");
     tile("Events settled", mg ? mg.events.toLocaleString() : "0", mg ? mg.settled_fills.toLocaleString() + " settled fills" : "no settled fills yet", "");
-    document.getElementById("t23empty").hidden = !!mg;
+    document.getElementById("t23empty").hidden = (s.settled || []).some(function (r) { return r.universe === "train23"; });
     var mrows = s.main_rows || [], mh = Array.from(new Set(mrows.map(function (r) { return r.H; }))).sort();
     var mval = function (arm, h) { var r = mrows.find(function (q) { return q.arm === arm && q.H === h; }); return r ? r.total_usd : 0; };
     var mseries = [["G2", "--s1"], ["Linear", "--s2"], ["Random (same share)", "--s5"], ["Quote all", "--s6"]].map(function (m) {
@@ -211,10 +212,15 @@ footer a { color: var(--accent); }
     } else { document.getElementById("chartm").replaceChildren(); }
     [["train23", "t23"], ["full", "tfull"], ["full_same", "tsame"]].forEach(function (u) {
       var body = document.querySelector("#" + u[1] + " tbody"); body.replaceChildren();
-      (s.settled || []).filter(function (r) { return r.universe === u[0]; }).sort(function (a, b) { return b.net_usd - a.net_usd; }).forEach(function (r) {
+      // every strategy is listed; one with no settled position yet shows dashes (2026-10-17: a table listing only
+      // the strategies with settlements looked like the others were missing)
+      var ARMS = ["G2", "Linear", "Neural", "G", "Random (same share)", "Quote all"];
+      var have = (s.settled || []).filter(function (r) { return r.universe === u[0]; });
+      ARMS.map(function (a) { return have.find(function (r) { return r.arm === a; }) || { arm: a, net_usd: null, return_pct: null, settled_fills: 0, events: 0 }; })
+        .sort(function (a, b) { return (b.net_usd == null ? -1e12 : b.net_usd) - (a.net_usd == null ? -1e12 : a.net_usd); }).forEach(function (r) {
         var tr = document.createElement("tr"); if (r.arm === "G2") tr.className = "hl";
         var rp = r.return_pct == null ? "—" : (r.return_pct > 0 ? "+" : "") + r.return_pct.toFixed(1) + "%";
-        [[r.arm, ""], [usd(r.net_usd), r.net_usd > 0 ? "pos" : r.net_usd < 0 ? "neg" : ""], [rp, r.return_pct > 0 ? "pos" : r.return_pct < 0 ? "neg" : ""],
+        [[r.arm, ""], [r.net_usd == null ? "—" : usd(r.net_usd), r.net_usd > 0 ? "pos" : r.net_usd < 0 ? "neg" : ""], [rp, r.return_pct > 0 ? "pos" : r.return_pct < 0 ? "neg" : ""],
          [r.settled_fills.toLocaleString(), ""], [r.events.toLocaleString(), ""]].forEach(function (c) {
           var td = document.createElement("td"); td.textContent = c[0]; if (c[1]) td.className = c[1]; tr.appendChild(td);
         });

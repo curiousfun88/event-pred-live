@@ -49,3 +49,4 @@
 {"t": "2026-10-17T05:41:11+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "predecessor gone; taking over", "predecessor": "prod-a"}
 {"t": "2026-10-17T05:41:11+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: producer not running; starting it"}
 {"t": "2026-10-17T05:41:11+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: paper trader not running; starting it"}
+{"t": "2026-10-17T10:22:11+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper error", "error": "<HTTPError 500: 'Internal Server Error'>"}

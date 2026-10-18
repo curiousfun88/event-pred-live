@@ -62,3 +62,4 @@
 {"t": "2026-10-18T09:23:24+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "backup failed", "step": "exception", "err": "PermissionError(13, 'Permission denied')"}
 {"t": "2026-10-18T18:29:08+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 500: 'Internal Server Error'>"}
 {"t": "2026-10-18T18:34:08+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-10-18T19:09:32+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "URLError(gaierror(-3, 'Temporary failure in name resolution'))"}

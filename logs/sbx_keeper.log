@@ -58,3 +58,4 @@
 {"t": "2026-10-18T02:45:46+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "predecessor gone; taking over", "predecessor": "prod-b"}
 {"t": "2026-10-18T02:45:46+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
 {"t": "2026-10-18T02:45:46+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
+{"t": "2026-10-18T04:24:30+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

@@ -10,13 +10,16 @@
   --bg: #f6f7f4; --panel: #ffffff; --fg: #1d2420; --muted: #5d6862; --line: #dde2dc; --grid: #e9ece8;
   --ok: #1f7a4c; --bad: #b3372b; --warn: #a66a00; --accent: #2457a6;
   --s1: #2457a6; --s2: #c2662d; --s3: #6b8e23; --s4: #8a4fb0; --s5: #7d7d7d; --s6: #b3372b;
+  --s7: #13858a; --s8: #b8860b; --s9: #4a5bb8; --s10: #8d5e44; --s11: #b8336a; --s12: #3f7f5f; --s13: #6a6f2a; --s14: #a0522d;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #131715; --panel: #1b201d; --fg: #e5ebe6; --muted: #9aa59e; --line: #2c332f; --grid: #232926;
           --ok: #5cc28f; --bad: #e57a6c; --warn: #e0a640; --accent: #7aa7ef;
-          --s1: #7aa7ef; --s2: #e89a63; --s3: #a8c95a; --s4: #c39be0; --s5: #a5a5a5; --s6: #e57a6c; color-scheme: dark; }
+          --s1: #7aa7ef; --s2: #e89a63; --s3: #a8c95a; --s4: #c39be0; --s5: #a5a5a5; --s6: #e57a6c;
+          --s7: #4fc3c8; --s8: #e3b341; --s9: #8e9bea; --s10: #c99a7e; --s11: #ec7fa9; --s12: #7cc49e; --s13: #c2c873; --s14: #e0916a;
+          color-scheme: dark; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans); font-variant-numeric: tabular-nums; }
@@ -55,6 +58,9 @@ details summary:focus-visible { outline: 2px solid var(--accent); outline-offset
 .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend i { width: 12px; height: 3px; border-radius: 2px; display: inline-block; }
+.legend span.tog { cursor: pointer; user-select: none; }
+.legend span.off { opacity: 0.4; text-decoration: line-through; }
+tr.grp td { font-size: 12px; color: var(--muted); padding-top: 10px; }
 .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px;
        font-size: 12px; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,.12); z-index: 2; }
 .tip .t { color: var(--muted); margin-bottom: 2px; }
@@ -100,18 +106,24 @@ footer a { color: var(--accent); }
       <div class="chart" id="chartm"></div>
       <p class="empty" id="chartmempty" hidden>Starts with the first ledger entries that record the main result.</p>
     </section>
+    <section class="card">
+      <h2>Main result: settled net P&amp;L over time</h2>
+      <p>Net P&amp;L of settled positions only (the table's Net column), at each hourly entry. It steps when events settle.</p>
+      <div class="legend" id="legendr"></div>
+      <div class="chart" id="chartr"></div>
+    </section>
   </div>
 
   <details class="card" id="secondary">
     <summary><b>Show generalisation results (full universe)</b> <span class="sub">secondary test: every series the strategy quotes, mostly unseen in training</span></summary>
-    <p>The full universe from the start was the original headline, fixed before the start; the same-hours table matches the main result's window. Settled positions only.</p>
+    <p>The full universe from the start was the original headline, fixed before the start. It covers quoting hours to 17 Oct 05:00 UTC: from 06:00 the producer quotes only the 23 series (amendment L19), so later hours count in the main result only. The same-hours table covers the main result's hours within that window (16 Oct 17:00 to 17 Oct 05:00 UTC). Settled positions only; open positions from those hours still settle.</p>
     <div class="grid">
       <section>
-        <h2>Same hours as the main result</h2>
+        <h2>Same hours as the main result (16 Oct 17:00 to 17 Oct 05:00 UTC)</h2>
         <div class="tablewrap"><table id="tsame"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
       </section>
       <section>
-        <h2>From the start (15 Oct 19:00 UTC)</h2>
+        <h2>From the start (15 Oct 19:00 to 17 Oct 05:00 UTC)</h2>
         <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
       </section>
     </div>
@@ -174,6 +186,11 @@ footer a { color: var(--accent); }
     box.appendChild(svg); box.appendChild(tip);
   }
 
+  // every ledgered strategy; the first six are the headline and pre-registered baselines, shown by default
+  var CORE = [["G2", "--s1"], ["Linear", "--s2"], ["Neural", "--s3"], ["G", "--s4"], ["Random (same share)", "--s5"], ["Quote all", "--s6"]];
+  var OTHER = [["G2 W1", "--s7"], ["G2 W2", "--s8"], ["G2 selected categories", "--s9"], ["G2 two-level", "--s10"],
+               ["Random two-level", "--s11"], ["Wide spreads", "--s12"], ["Liquid only", "--s13"], ["Liquid (traded markets)", "--s14"]];
+  var shown = {}; CORE.forEach(function (m) { shown[m[0]] = true; });
   function render(s) {
     var chips = document.getElementById("chips"); chips.replaceChildren();
     var lagH = s.latest_producer_hour ? (Date.now() - toDate(s.latest_producer_hour).getTime()) / 3.6e6 : null;
@@ -201,23 +218,40 @@ footer a { color: var(--accent); }
     tile("Events settled", mg ? mg.events.toLocaleString() : "0", mg ? mg.settled_fills.toLocaleString() + " settled fills" : "no settled fills yet", "");
     document.getElementById("t23empty").hidden = (s.settled || []).some(function (r) { return r.universe === "train23"; });
     var mrows = s.main_rows || [], mh = Array.from(new Set(mrows.map(function (r) { return r.H; }))).sort();
-    var mval = function (arm, h) { var r = mrows.find(function (q) { return q.arm === arm && q.H === h; }); return r ? r.total_usd : 0; };
-    var mseries = [["G2", "--s1"], ["Linear", "--s2"], ["Random (same share)", "--s5"], ["Quote all", "--s6"]].map(function (m) {
-      return { name: m[0], color: css(m[1]), w: m[0] === "G2" ? 2.6 : 1.8, pts: mh.map(function (h) { return mval(m[0], h); }) }; });
-    var lgm = document.getElementById("legendm"); lgm.replaceChildren();
+    var mval = function (arm, h, f) { var r = mrows.find(function (q) { return q.arm === arm && q.H === h; }); return r ? r[f || "total_usd"] : 0; };
+    // a legend entry toggles that strategy on both charts; hidden ones also leave the y-axis range
+    var legend = function (box) {
+      box.replaceChildren();
+      CORE.concat(OTHER).forEach(function (m) {
+        var sp = document.createElement("span"); sp.className = "tog" + (shown[m[0]] ? "" : " off"); sp.title = "show or hide";
+        var i = document.createElement("i"); i.style.background = css(m[1]); sp.appendChild(i); sp.append(m[0]);
+        sp.addEventListener("click", function () { shown[m[0]] = !shown[m[0]]; render(s); });
+        box.appendChild(sp);
+      });
+    };
+    var series = function (f) {
+      return CORE.concat(OTHER).filter(function (m) { return shown[m[0]]; }).map(function (m) {
+        return { name: m[0], color: css(m[1]), w: m[0] === "G2" ? 2.6 : 1.8, pts: mh.map(function (h) { return mval(m[0], h, f); }) }; });
+    };
     document.getElementById("chartmempty").hidden = mh.length > 0;
-    if (mh.length) {
-      mseries.forEach(function (sr) { var sp = document.createElement("span"); var i = document.createElement("i"); i.style.background = sr.color; sp.appendChild(i); sp.append(sr.name); lgm.appendChild(sp); });
-      lineChart(document.getElementById("chartm"), mh, mseries);
-    } else { document.getElementById("chartm").replaceChildren(); }
+    [["chartm", "legendm", "total_usd"], ["chartr", "legendr", "realised_usd"]].forEach(function (c) {
+      if (mh.length) { legend(document.getElementById(c[1])); lineChart(document.getElementById(c[0]), mh, series(c[2])); }
+      else { document.getElementById(c[1]).replaceChildren(); document.getElementById(c[0]).replaceChildren(); }
+    });
     [["train23", "t23"], ["full", "tfull"], ["full_same", "tsame"]].forEach(function (u) {
       var body = document.querySelector("#" + u[1] + " tbody"); body.replaceChildren();
       // every strategy is listed; one with no settled position yet shows dashes (2026-10-17: a table listing only
       // the strategies with settlements looked like the others were missing)
-      var ARMS = ["G2", "Linear", "Neural", "G", "Random (same share)", "Quote all"];
       var have = (s.settled || []).filter(function (r) { return r.universe === u[0]; });
-      ARMS.map(function (a) { return have.find(function (r) { return r.arm === a; }) || { arm: a, net_usd: null, return_pct: null, settled_fills: 0, events: 0 }; })
-        .sort(function (a, b) { return (b.net_usd == null ? -1e12 : b.net_usd) - (a.net_usd == null ? -1e12 : a.net_usd); }).forEach(function (r) {
+      var rowsOf = function (list) {
+        return list.map(function (m) { return have.find(function (r) { return r.arm === m[0]; }) || { arm: m[0], net_usd: null, return_pct: null, settled_fills: 0, events: 0 }; })
+          .sort(function (a, b) { return (b.net_usd == null ? -1e12 : b.net_usd) - (a.net_usd == null ? -1e12 : a.net_usd); });
+      };
+      // main result: every strategy, the six headline/baseline arms first; secondary tables keep the six
+      var list = rowsOf(CORE);
+      if (u[0] === "train23") list = list.concat([{ grp: "Other ledgered strategies (G2 variants and rule baselines)" }], rowsOf(OTHER));
+      list.forEach(function (r) {
+        if (r.grp) { var g = document.createElement("tr"); g.className = "grp"; var gd = document.createElement("td"); gd.colSpan = 5; gd.textContent = r.grp; g.appendChild(gd); body.appendChild(g); return; }
         var tr = document.createElement("tr"); if (r.arm === "G2") tr.className = "hl";
         var rp = r.return_pct == null ? "—" : (r.return_pct > 0 ? "+" : "") + r.return_pct.toFixed(1) + "%";
         [[r.arm, ""], [r.net_usd == null ? "—" : usd(r.net_usd), r.net_usd > 0 ? "pos" : r.net_usd < 0 ? "neg" : ""], [rp, r.return_pct > 0 ? "pos" : r.return_pct < 0 ? "neg" : ""],

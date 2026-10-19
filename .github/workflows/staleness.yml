@@ -1,7 +1,7 @@
 name: live-test-staleness
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/10 * * * *"
   workflow_dispatch:
 jobs:
   check:
@@ -18,7 +18,7 @@ jobs:
           p, l = age(hb["latest_producer_hour"]), age(hb["latest_ledger_entry"]) if hb.get("latest_ledger_entry") else 1e9
           print(json.dumps(hb), f"producer hour age {p:.0f} min, ledger entry age {l:.0f} min")
           bad = []
-          if p > 150: bad.append(f"no new producer hour for {p:.0f} min")
+          if p > 90: bad.append(f"no new producer hour for {p:.0f} min")
           if l > 480: bad.append(f"no new ledger entry for {l:.0f} min")
           if bad:
               print("::error::LIVE TEST STALLED: " + "; ".join(bad)); sys.exit(1)

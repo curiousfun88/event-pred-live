@@ -88,3 +88,6 @@
 {"t": "2026-10-19T23:40:34+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
 {"t": "2026-10-19T23:40:34+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
 {"t": "2026-10-20T02:01:02+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "daily summary posted", "day": "20261019", "job": "home:fm:wfl-e3bb0274-60ed-40c7-acc6-14ea154da2c5"}
+{"t": "2026-10-20T09:00:23+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 0, \"failed\": 2}", "err": ""}
+{"t": "2026-10-20T09:00:23+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "URLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'lum.id'. (_ssl.c:1016)\"))"}
+{"t": "2026-10-20T09:05:23+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "URLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'lum.id'. (_ssl.c:1016)\"))"}

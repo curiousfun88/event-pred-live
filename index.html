@@ -200,6 +200,15 @@ footer a { color: var(--accent); }
      ["Ledger check issues", String(s.verification_issues), s.verification_issues === 0 ? "ok" : "late"]].forEach(function (c) {
       var sp = document.createElement("span"); sp.className = "chip " + c[2]; sp.append(c[0] + " "); var b = document.createElement("b"); b.textContent = c[1]; sp.appendChild(b); chips.appendChild(sp);
     });
+    // explained check notes on the descriptive arm liq_traded: shown, never counted as issues (host log 2026-10-16, 2026-10-20)
+    var notes = (s.late_arm_prejoin_notes || 0) + (s.liq_traded_rederivation_notes || 0);
+    if (notes) {
+      var nt = document.createElement("span"); nt.className = "chip";
+      nt.title = "Re-checks of the descriptive arm 'Liquid (traded markets)' only: on hours before it joined, and against a median "
+        + "over a subset of events (fixed 2026-10-20). Its recorded fills are unaffected; no other strategy has any check note.";
+      nt.append("Explained check notes "); var nb = document.createElement("b"); nb.textContent = String(notes); nt.appendChild(nb);
+      chips.appendChild(nt);
+    }
     var st = s.settled || [], pick = function (u, a) { return st.find(function (r) { return r.universe === u && r.arm === a; }); };
     var mg = pick("train23", "G2"), mr = pick("train23", "Random (same share)");
     var kp = document.getElementById("mainkpis"); kp.replaceChildren();

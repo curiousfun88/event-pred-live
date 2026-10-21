@@ -74,13 +74,15 @@ tr.hl td { font-weight: 600; }
 footer { font-size: 12px; color: var(--muted); }
 footer a { color: var(--accent); }
 .err { color: var(--bad); }
+.secline { margin: 0; font-size: 13px; color: var(--muted); }
+.secline b { color: var(--fg); font-weight: 600; }
 </style>
 </head>
 <body>
 <main>
   <header>
     <h1>G2 live ledger</h1>
-    <p class="lede">Live paper trading of the G2 market-making strategy and its baselines on Kalshi. The main result is G2 on the 23 series it was trained and backtested on; the full universe of markets is a secondary test of generalisation. This page reads the hourly ledger backup and reloads every 10 minutes. Times are in your local time.</p>
+    <p class="lede">Live paper trading of the G2 market-making strategy and its baselines on Kalshi. The main result is G2 on the 23 series it was trained and backtested on. This page reads the hourly ledger backup and reloads every 10 minutes. Times are in your local time.</p>
   </header>
 
   <div class="chips" id="chips"><span class="chip">Loading…</span></div>
@@ -114,20 +116,7 @@ footer a { color: var(--accent); }
     </section>
   </div>
 
-  <details class="card" id="secondary">
-    <summary><b>Show generalisation results (full universe)</b> <span class="sub">secondary test: every series the strategy quotes, mostly unseen in training</span></summary>
-    <p>The full universe from the start was the original headline, fixed before the start. It covers quoting hours to 17 Oct 05:00 UTC: from 06:00 the producer quotes only the 23 series (amendment L19), so later hours count in the main result only. The same-hours table covers the main result's hours within that window (16 Oct 17:00 to 17 Oct 05:00 UTC). Settled positions only; open positions from those hours still settle.</p>
-    <div class="grid">
-      <section>
-        <h2>Same hours as the main result (16 Oct 17:00 to 17 Oct 05:00 UTC)</h2>
-        <div class="tablewrap"><table id="tsame"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
-      </section>
-      <section>
-        <h2>From the start (15 Oct 19:00 to 17 Oct 05:00 UTC)</h2>
-        <div class="tablewrap"><table id="tfull"><thead><tr><th>Strategy</th><th>Net</th><th>Return</th><th>Settled fills</th><th>Events</th></tr></thead><tbody></tbody></table></div>
-      </section>
-    </div>
-  </details>
+  <p class="secline" id="secondary"><b>Secondary result (full universe, pre-registered):</b> every series the strategy quotes, quoting hours 15 Oct 19:00 to 17 Oct 05:00 UTC, closed when the producer moved to the 23 series (amendment L19). <span id="secvals">Loading…</span> Reported in the cut report as an inconclusive transfer check.</p>
 
   <footer id="foot">Data: <a href="https://github.com/curiousfun88/event-pred-live">event-pred-live</a> (ledger, hash chain and OpenTimestamps receipts). Rules and amendments: <a href="https://github.com/curiousfun88/event-pred">event-pred</a>, docs/planning/lumid-forward-test-preregistration.md.</footer>
 </main>
@@ -225,6 +214,12 @@ footer a { color: var(--accent); }
     tile("G2 return", mg ? pc(mg.return_pct) : "—", "net over committed capital", mg ? sgn(mg.return_pct) : "");
     tile("G2 minus random", mg && mr ? usd(mg.net_usd - mr.net_usd) : "—", mr ? "random at G2's posting share: " + usd(mr.net_usd) : "random at G2's posting share", mg && mr ? sgn(mg.net_usd - mr.net_usd) : "");
     tile("Events settled", mg ? mg.events.toLocaleString() : "0", mg ? mg.settled_fills.toLocaleString() + " settled fills" : "no settled fills yet", "");
+    // secondary result, one line (2026-10-21): G2 and random at the same share on the full universe, settled positions
+    var fu = (s.settled || []).filter(function (r) { return r.universe === "full"; });
+    var fg = fu.find(function (r) { return r.arm === "G2"; }), fr = fu.find(function (r) { return r.arm === "Random (same share)"; });
+    document.getElementById("secvals").textContent = fg
+      ? "Settled positions: G2 " + usd(fg.net_usd) + " (" + pc(fg.return_pct) + ")" + (fr ? ", random at the same share " + usd(fr.net_usd) + " (" + pc(fr.return_pct) + ")." : ".")
+      : "No settled positions yet.";
     document.getElementById("t23empty").hidden = (s.settled || []).some(function (r) { return r.universe === "train23"; });
     var mrows = s.main_rows || [], mh = Array.from(new Set(mrows.map(function (r) { return r.H; }))).sort();
     var mval = function (arm, h, f) { var r = mrows.find(function (q) { return q.arm === arm && q.H === h; }); return r ? r[f || "total_usd"] : 0; };
@@ -247,7 +242,7 @@ footer a { color: var(--accent); }
       if (mh.length) { legend(document.getElementById(c[1])); lineChart(document.getElementById(c[0]), mh, series(c[2])); }
       else { document.getElementById(c[1]).replaceChildren(); document.getElementById(c[0]).replaceChildren(); }
     });
-    [["train23", "t23"], ["full", "tfull"], ["full_same", "tsame"]].forEach(function (u) {
+    [["train23", "t23"]].forEach(function (u) {
       var body = document.querySelector("#" + u[1] + " tbody"); body.replaceChildren();
       // every strategy is listed; one with no settled position yet shows dashes (2026-10-17: a table listing only
       // the strategies with settlements looked like the others were missing)
@@ -256,7 +251,7 @@ footer a { color: var(--accent); }
         return list.map(function (m) { return have.find(function (r) { return r.arm === m[0]; }) || { arm: m[0], net_usd: null, return_pct: null, settled_fills: 0, events: 0 }; })
           .sort(function (a, b) { return (b.net_usd == null ? -1e12 : b.net_usd) - (a.net_usd == null ? -1e12 : a.net_usd); });
       };
-      // main result: every strategy, the six headline/baseline arms first; secondary tables keep the six
+      // main result: every strategy, the six headline/baseline arms first
       var list = rowsOf(CORE);
       if (u[0] === "train23") list = list.concat([{ grp: "Other ledgered strategies (G2 variants and rule baselines)" }], rowsOf(OTHER));
       list.forEach(function (r) {

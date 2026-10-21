@@ -100,3 +100,4 @@
 {"t": "2026-10-20T20:41:20+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: producer not running; starting it"}
 {"t": "2026-10-20T20:41:20+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: paper trader not running; starting it"}
 {"t": "2026-10-21T02:01:32+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "daily summary posted", "day": "20261020", "job": "home:fm:wfl-8110ead8-30c3-431c-be8e-9ebbd871d57a"}
+{"t": "2026-10-21T05:29:17+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

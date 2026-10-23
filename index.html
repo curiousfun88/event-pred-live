@@ -194,9 +194,18 @@ footer a { color: var(--accent); }
     if (notes) {
       var nt = document.createElement("span"); nt.className = "chip";
       nt.title = "Re-checks of the descriptive arm 'Liquid (traded markets)' only: on hours before it joined, and against a median "
-        + "over a subset of events (fixed 2026-10-20). Its recorded fills are unaffected; no other strategy has any check note.";
+        + "over a subset of events (fixed 2026-10-20). Its recorded fills are unaffected.";
       nt.append("Explained check notes "); var nb = document.createElement("b"); nb.textContent = String(notes); nt.appendChild(nb);
       chips.appendChild(nt);
+    }
+    // re-checks of a gap already covered by an append-only correction file (host log 2026-10-22): notes, not issues
+    if (s.correction_covered_notes) {
+      var cn = document.createElement("span"); cn.className = "chip";
+      cn.title = "Hourly re-checks of the 8 fills of 'G2 selected categories' omitted after the 2026-10-22 restore. "
+        + "They are listed in an append-only, timestamped correction file next to the ledger. A re-check counts here only "
+        + "if it matches the correction exactly; anything else is counted as a ledger check issue.";
+      cn.append("Re-checks of a corrected gap "); var cb = document.createElement("b"); cb.textContent = String(s.correction_covered_notes);
+      cn.appendChild(cb); chips.appendChild(cn);
     }
     var st = s.settled || [], pick = function (u, a) { return st.find(function (r) { return r.universe === u && r.arm === a; }); };
     var mg = pick("train23", "G2"), mr = pick("train23", "Random (same share)");

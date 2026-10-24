@@ -4362,9 +4362,9 @@
 {"close_ns": 1792789118000000000, "result": "no", "settled_ns": 1792789182421723000, "status": "finalized", "ticker": "KXEPLGAME-26OCT23IPSNFO-IPS"}
 {"close_ns": 1792789118000000000, "result": "no", "settled_ns": 1792789182421723000, "status": "finalized", "ticker": "KXEPLGAME-26OCT23IPSNFO-NFO"}
 {"close_ns": 1792789118000000000, "result": "yes", "settled_ns": 1792789182421723000, "status": "finalized", "ticker": "KXEPLGAME-26OCT23IPSNFO-TIE"}
-{"close_ns": 1793023200000000000, "result": "", "settled_ns": null, "status": "inactive", "ticker": "KXEPLGAME-26OCT24ARSEVE-ARS"}
-{"close_ns": 1793023200000000000, "result": "", "settled_ns": null, "status": "inactive", "ticker": "KXEPLGAME-26OCT24ARSEVE-EVE"}
-{"close_ns": 1793023200000000000, "result": "", "settled_ns": null, "status": "inactive", "ticker": "KXEPLGAME-26OCT24ARSEVE-TIE"}
+{"close_ns": 1792857851000000000, "result": "yes", "settled_ns": 1792857912461530000, "status": "finalized", "ticker": "KXEPLGAME-26OCT24ARSEVE-ARS"}
+{"close_ns": 1792857851000000000, "result": "no", "settled_ns": 1792857912461530000, "status": "finalized", "ticker": "KXEPLGAME-26OCT24ARSEVE-EVE"}
+{"close_ns": 1792857851000000000, "result": "no", "settled_ns": 1792857912461530000, "status": "finalized", "ticker": "KXEPLGAME-26OCT24ARSEVE-TIE"}
 {"close_ns": 1792848902000000000, "result": "yes", "settled_ns": 1792848962521054000, "status": "finalized", "ticker": "KXEPLGAME-26OCT24AVLMCI-AVL"}
 {"close_ns": 1792848902000000000, "result": "no", "settled_ns": 1792848962521054000, "status": "finalized", "ticker": "KXEPLGAME-26OCT24AVLMCI-MCI"}
 {"close_ns": 1792848902000000000, "result": "no", "settled_ns": 1792848962521054000, "status": "finalized", "ticker": "KXEPLGAME-26OCT24AVLMCI-TIE"}
@@ -8844,9 +8844,9 @@
 {"close_ns": 1792850575000000000, "result": "yes", "settled_ns": 1792850637415342000, "status": "finalized", "ticker": "KXLALIGAGAME-26OCT24RVCELC-ELC"}
 {"close_ns": 1792850575000000000, "result": "no", "settled_ns": 1792850637415342000, "status": "finalized", "ticker": "KXLALIGAGAME-26OCT24RVCELC-RVC"}
 {"close_ns": 1792850575000000000, "result": "no", "settled_ns": 1792850637415342000, "status": "finalized", "ticker": "KXLALIGAGAME-26OCT24RVCELC-TIE"}
-{"close_ns": 1793024100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLALIGAGAME-26OCT24SANESP-ESP"}
-{"close_ns": 1793024100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLALIGAGAME-26OCT24SANESP-SAN"}
-{"close_ns": 1793024100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLALIGAGAME-26OCT24SANESP-TIE"}
+{"close_ns": 1792858322000000000, "result": "no", "settled_ns": 1792858382380694000, "status": "finalized", "ticker": "KXLALIGAGAME-26OCT24SANESP-ESP"}
+{"close_ns": 1792858322000000000, "result": "yes", "settled_ns": 1792858382380694000, "status": "finalized", "ticker": "KXLALIGAGAME-26OCT24SANESP-SAN"}
+{"close_ns": 1792858322000000000, "result": "no", "settled_ns": 1792858382380694000, "status": "finalized", "ticker": "KXLALIGAGAME-26OCT24SANESP-TIE"}
 {"close_ns": 1793032200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLALIGAGAME-26OCT24VCFVIL-TIE"}
 {"close_ns": 1793032200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLALIGAGAME-26OCT24VCFVIL-VCF"}
 {"close_ns": 1793032200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLALIGAGAME-26OCT24VCFVIL-VIL"}

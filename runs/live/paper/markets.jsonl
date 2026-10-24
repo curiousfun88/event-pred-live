@@ -11050,9 +11050,9 @@
 {"close_ns": 1793061000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24HOUMIN-HOU"}
 {"close_ns": 1793061000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24HOUMIN-MIN"}
 {"close_ns": 1793061000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24HOUMIN-TIE"}
-{"close_ns": 1793035800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24MTLNSH-MTL"}
-{"close_ns": 1793035800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24MTLNSH-NSH"}
-{"close_ns": 1793035800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24MTLNSH-TIE"}
+{"close_ns": 1792870522000000000, "result": "no", "settled_ns": 1792870582368011000, "status": "finalized", "ticker": "KXMLSGAME-26OCT24MTLNSH-MTL"}
+{"close_ns": 1792870522000000000, "result": "yes", "settled_ns": 1792870582368011000, "status": "finalized", "ticker": "KXMLSGAME-26OCT24MTLNSH-NSH"}
+{"close_ns": 1792870522000000000, "result": "no", "settled_ns": 1792870582368011000, "status": "finalized", "ticker": "KXMLSGAME-26OCT24MTLNSH-TIE"}
 {"close_ns": 1793050200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24NYRBMIA-MIA"}
 {"close_ns": 1793050200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24NYRBMIA-NYRB"}
 {"close_ns": 1793050200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26OCT24NYRBMIA-TIE"}

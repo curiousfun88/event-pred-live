@@ -1,6 +1,6 @@
 {
- "utc": "2026-10-26T12:14:29+00:00",
- "host": "sbx-curiouslearner842-prod-a",
+ "utc": "2026-10-26T12:56:40+00:00",
+ "host": "sbx-curiouslearner842-prod-b",
  "latest_producer_hour": "20261026T12",
  "latest_ledger_entry": "20261026T10",
  "ledger_entries": 256

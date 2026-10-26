@@ -6949,6 +6949,11 @@
 {"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-NEUT"}
 {"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-XFEAR"}
 {"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-XGREE"}
+{"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-FEAR"}
+{"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-GREE"}
+{"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-NEUT"}
+{"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-XFEAR"}
+{"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-XGREE"}
 {"close_ns": 1792203962000000000, "result": "no", "settled_ns": 1792205766780326000, "status": "finalized", "ticker": "KXFEAR-26OCT16-FEAR"}
 {"close_ns": 1792203962000000000, "result": "no", "settled_ns": 1792205766780326000, "status": "finalized", "ticker": "KXFEAR-26OCT16-GREE"}
 {"close_ns": 1792203962000000000, "result": "no", "settled_ns": 1792205766780326000, "status": "finalized", "ticker": "KXFEAR-26OCT16-NEUT"}
@@ -9897,6 +9902,15 @@
 {"close_ns": 1798729200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26DEC31-MOON"}
 {"close_ns": 1798729200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26DEC31-OAI"}
 {"close_ns": 1798729200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26DEC31-XAI"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-ALIB"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-AMAZ"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-ANTH"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-BYTE"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-GOOG"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-META"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-MOON"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-OPEN"}
+{"close_ns": 1793631600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV02-XAI"}
 {"close_ns": 1792418400000000000, "result": "no", "settled_ns": 1792422801783901000, "status": "finalized", "ticker": "KXLLM1-26OCT19-ALIB"}
 {"close_ns": 1792418400000000000, "result": "no", "settled_ns": 1792422801783901000, "status": "finalized", "ticker": "KXLLM1-26OCT19-AMAZ"}
 {"close_ns": 1792418400000000000, "result": "no", "settled_ns": 1792422801783901000, "status": "finalized", "ticker": "KXLLM1-26OCT19-ANTH"}

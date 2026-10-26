@@ -7347,12 +7347,12 @@
 {"close_ns": 1792911600000000000, "result": "no", "settled_ns": 1792911600000000000, "status": "determined", "ticker": "KXHIGHDEN-26OCT24-B59.5"}
 {"close_ns": 1792911600000000000, "result": "no", "settled_ns": 1792911600000000000, "status": "determined", "ticker": "KXHIGHDEN-26OCT24-T53"}
 {"close_ns": 1792911600000000000, "result": "no", "settled_ns": 1792911600000000000, "status": "determined", "ticker": "KXHIGHDEN-26OCT24-T60"}
-{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT25-B56.5"}
-{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT25-B58.5"}
-{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT25-B60.5"}
-{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT25-B62.5"}
-{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT25-T56"}
-{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT25-T63"}
+{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHDEN-26OCT25-B56.5"}
+{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHDEN-26OCT25-B58.5"}
+{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHDEN-26OCT25-B60.5"}
+{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHDEN-26OCT25-B62.5"}
+{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHDEN-26OCT25-T56"}
+{"close_ns": 1792998000000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHDEN-26OCT25-T63"}
 {"close_ns": 1793084400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT26-B59.5"}
 {"close_ns": 1793084400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT26-B61.5"}
 {"close_ns": 1793084400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHDEN-26OCT26-B63.5"}
@@ -8731,7 +8731,7 @@
 {"close_ns": 1792315639000000000, "result": "no", "settled_ns": 1792315701786663000, "status": "finalized", "ticker": "KXKLEAGUEGAME-26OCT18GAWINC-INC"}
 {"close_ns": 1792315639000000000, "result": "yes", "settled_ns": 1792315701786663000, "status": "finalized", "ticker": "KXKLEAGUEGAME-26OCT18GAWINC-TIE"}
 {"close_ns": 1792260330000000000, "result": "no", "settled_ns": 1792262131773159000, "status": "finalized", "ticker": "KXLAGODAYS-26OCT-0"}
-{"close_ns": 1792976499000000000, "result": "no", "settled_ns": 1792976499000000000, "status": "determined", "ticker": "KXLAGODAYS-26OCT-1"}
+{"close_ns": 1792976499000000000, "result": "no", "settled_ns": 1792978299981710000, "status": "finalized", "ticker": "KXLAGODAYS-26OCT-1"}
 {"close_ns": 1793545200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLAGODAYS-26OCT-2"}
 {"close_ns": 1793545200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLAGODAYS-26OCT-3"}
 {"close_ns": 1793545200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLAGODAYS-26OCT-4"}

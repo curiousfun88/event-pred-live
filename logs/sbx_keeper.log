@@ -104,59 +104,9 @@
 {"t": "2026-10-21T05:39:31+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-10-21T05:44:42+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-10-21T15:16:12+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper error", "error": "URLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'lum.id'. (_ssl.c:1016)\"))"}
-{"t": "2026-10-22T04:20:11+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper started", "sandbox": "prod-a", "wait_for": null}
-{"t": "2026-10-22T04:20:11+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
-{"t": "2026-10-22T04:20:12+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-22T04:20:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "daily summary posted", "day": "20261021", "job": "home:fm:wfl-85f6142d-7dac-4e0a-a4ae-0b62a9215213"}
-{"t": "2026-10-22T04:45:49+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-22T06:12:03+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-22T06:27:34+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-22T07:28:23+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-22T07:38:32+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-22T08:44:28+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-22T08:49:28+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-23T00:43:39+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "handover: creating successor", "successor": "prod-b", "reason": "quiet"}
-{"t": "2026-10-23T00:44:03+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper started", "sandbox": "prod-b", "wait_for": "prod-a"}
-{"t": "2026-10-23T00:44:20+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "handover confirmed (successor keeper waiting); deleting this sandbox, which stops its producer and paper trader", "successor": "prod-b"}
-{"t": "2026-10-23T00:44:37+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "predecessor gone; taking over", "predecessor": "prod-a"}
-{"t": "2026-10-23T00:44:37+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: producer not running; starting it"}
-{"t": "2026-10-23T00:44:37+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-23T02:01:38+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "daily summary posted", "day": "20261022", "job": "home:fm:wfl-6309924a-01a5-49b3-bcd3-c16e4e9c1e55"}
-{"t": "2026-10-23T21:44:22+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "handover: creating successor", "successor": "prod-a", "reason": "quiet"}
-{"t": "2026-10-23T21:44:37+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper started", "sandbox": "prod-a", "wait_for": "prod-b"}
-{"t": "2026-10-23T21:44:53+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "handover confirmed (successor keeper waiting); deleting this sandbox, which stops its producer and paper trader", "successor": "prod-a"}
-{"t": "2026-10-23T21:45:10+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "predecessor gone; taking over", "predecessor": "prod-b"}
-{"t": "2026-10-23T21:45:10+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
-{"t": "2026-10-23T21:45:10+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-24T02:02:24+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "daily summary posted", "day": "20261023", "job": "home:fm:wfl-46dfb12c-28e3-495a-bbd5-e8ef2d522894"}
-{"t": "2026-10-24T08:40:01+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-24T08:45:01+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-24T18:48:12+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "handover: creating successor", "successor": "prod-b", "reason": "quiet"}
-{"t": "2026-10-24T18:48:27+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper started", "sandbox": "prod-b", "wait_for": "prod-a"}
-{"t": "2026-10-24T18:48:44+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "handover confirmed (successor keeper waiting); deleting this sandbox, which stops its producer and paper trader", "successor": "prod-b"}
-{"t": "2026-10-24T18:49:01+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "predecessor gone; taking over", "predecessor": "prod-a"}
-{"t": "2026-10-24T18:49:01+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: producer not running; starting it"}
-{"t": "2026-10-24T18:49:01+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-24T20:58:43+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-25T02:02:23+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "daily summary posted", "day": "20261024", "job": "home:fm:wfl-94457a05-2bee-4143-8dbd-ad05e020210e"}
-{"t": "2026-10-25T15:52:13+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "handover: creating successor", "successor": "prod-a", "reason": "quiet"}
-{"t": "2026-10-25T15:52:29+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper started", "sandbox": "prod-a", "wait_for": "prod-b"}
-{"t": "2026-10-25T15:52:46+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "handover confirmed (successor keeper waiting); deleting this sandbox, which stops its producer and paper trader", "successor": "prod-a"}
-{"t": "2026-10-25T15:53:02+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "predecessor gone; taking over", "predecessor": "prod-b"}
-{"t": "2026-10-25T15:53:02+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
-{"t": "2026-10-25T15:53:02+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
-{"t": "2026-10-25T18:48:18+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-26T00:41:57+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-26T02:04:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "daily summary posted", "day": "20261025", "job": "home:fm:wfl-d6ed024f-9b29-48e8-9322-e8d2fb1edb4e"}
-{"t": "2026-10-26T06:22:50+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 0, \"failed\": 1}", "err": ""}
-{"t": "2026-10-26T06:22:50+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 401: 'Unauthorized'>"}
-{"t": "2026-10-26T08:25:56+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 401: 'Unauthorized'>"}
-{"t": "2026-10-26T08:31:56+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}
-{"t": "2026-10-26T08:42:12+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-26T11:49:00+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
-{"t": "2026-10-26T12:56:01+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "handover: creating successor", "successor": "prod-b", "reason": "quiet"}
-{"t": "2026-10-26T12:56:15+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "keeper started", "sandbox": "prod-b", "wait_for": "prod-a"}
-{"t": "2026-10-26T12:56:31+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "handover confirmed (successor keeper waiting); deleting this sandbox, which stops its producer and paper trader", "successor": "prod-b"}
-{"t": "2026-10-26T12:56:32+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "predecessor gone; taking over", "predecessor": "prod-a"}
-{"t": "2026-10-26T12:56:32+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: producer not running; starting it"}
-{"t": "2026-10-26T12:56:32+00:00", "host": "sbx-curiouslearner842-prod-b", "msg": "watchdog: paper trader not running; starting it"}
+{"t": "2026-10-22T00:37:59+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper started", "sandbox": "prod-a", "wait_for": null}
+{"t": "2026-10-22T00:38:31+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
+{"t": "2026-10-22T00:39:52+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
+{"t": "2026-10-27T01:28:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper started", "sandbox": "prod-a", "wait_for": null}
+{"t": "2026-10-27T01:28:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
+{"t": "2026-10-27T01:28:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}

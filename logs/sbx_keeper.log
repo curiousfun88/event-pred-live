@@ -114,3 +114,4 @@
 {"t": "2026-10-27T03:52:46+00:00", "host": "event-pred-standby", "msg": "watchdog: producer not running; starting it"}
 {"t": "2026-10-27T03:52:47+00:00", "host": "event-pred-standby", "msg": "watchdog: paper trader not running; starting it"}
 {"t": "2026-10-27T03:53:35+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261026", "job": "home:fm:wfl-cb85acdb-93c2-41e2-ada9-6d6602ba629c"}
+{"t": "2026-10-27T04:24:18+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

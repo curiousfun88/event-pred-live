@@ -110,3 +110,6 @@
 {"t": "2026-10-27T01:28:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "keeper started", "sandbox": "prod-a", "wait_for": null}
 {"t": "2026-10-27T01:28:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: producer not running; starting it"}
 {"t": "2026-10-27T01:28:25+00:00", "host": "sbx-curiouslearner842-prod-a", "msg": "watchdog: paper trader not running; starting it"}
+{"t": "2026-10-27T03:52:46+00:00", "host": "event-pred-standby", "msg": "keeper started", "sandbox": "event-pred-standby", "wait_for": null}
+{"t": "2026-10-27T03:52:46+00:00", "host": "event-pred-standby", "msg": "watchdog: producer not running; starting it"}
+{"t": "2026-10-27T03:52:47+00:00", "host": "event-pred-standby", "msg": "watchdog: paper trader not running; starting it"}

@@ -164,3 +164,5 @@
 {"t": "2026-10-29T10:11:10+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}
 {"t": "2026-10-29T10:28:04+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 500: 'Internal Server Error'>"}
 {"t": "2026-10-29T12:50:00+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-10-29T12:55:38+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 500: 'Internal Server Error'>"}
+{"t": "2026-10-29T13:01:31+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 500: 'Internal Server Error'>"}

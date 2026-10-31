@@ -539,3 +539,5 @@
 {"t": "2026-10-31T11:16:17+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-10-31T11:21:27+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-10-31T11:26:28+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-10-31T11:33:49+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-10-31T11:38:50+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

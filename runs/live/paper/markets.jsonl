@@ -6978,7 +6978,7 @@
 {"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXF1RACE-MEX26-LEC"}
 {"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXF1RACE-MEX26-LIN"}
 {"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXF1RACE-MEX26-NOR"}
-{"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXF1RACE-MEX26-OCO"}
+{"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "inactive", "ticker": "KXF1RACE-MEX26-OCO"}
 {"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXF1RACE-MEX26-PER"}
 {"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXF1RACE-MEX26-PIA"}
 {"close_ns": 1794189600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXF1RACE-MEX26-RUS"}

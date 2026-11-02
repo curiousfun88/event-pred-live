@@ -10450,6 +10450,15 @@
 {"close_ns": 1793631600000000000, "result": "no", "settled_ns": 1793631600000000000, "status": "determined", "ticker": "KXLLM1-26NOV02-MOON"}
 {"close_ns": 1793631600000000000, "result": "no", "settled_ns": 1793631600000000000, "status": "determined", "ticker": "KXLLM1-26NOV02-OPEN"}
 {"close_ns": 1793631600000000000, "result": "no", "settled_ns": 1793631600000000000, "status": "determined", "ticker": "KXLLM1-26NOV02-XAI"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-ALIB"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-AMAZ"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-ANTH"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-BYTE"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-GOOG"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-META"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-MOON"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-OPEN"}
+{"close_ns": 1794236400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV09-XAI"}
 {"close_ns": 1796050800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV30-A"}
 {"close_ns": 1796050800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV30-ALI"}
 {"close_ns": 1796050800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLLM1-26NOV30-GOOG"}

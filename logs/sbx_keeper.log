@@ -973,3 +973,5 @@
 {"t": "2026-11-02T02:06:00+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261101", "job": "home:fm:wfl-d603c6d3-629a-4db3-b337-4dba13332a70"}
 {"t": "2026-11-02T02:06:00+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-02T02:11:01+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-02T02:16:11+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-02T02:21:13+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

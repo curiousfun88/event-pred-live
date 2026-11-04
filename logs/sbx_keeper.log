@@ -1491,3 +1491,5 @@
 {"t": "2026-11-04T01:02:42+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}
 {"t": "2026-11-04T01:08:14+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-04T01:13:15+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-04T01:18:30+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-04T01:23:31+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

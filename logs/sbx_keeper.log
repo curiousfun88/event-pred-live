@@ -1592,3 +1592,6 @@
 {"t": "2026-11-04T10:06:02+00:00", "host": "event-pred-standby", "msg": "backup failed", "step": "push", "err": "git@github.com: Permission denied (publickey).\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n"}
 {"t": "2026-11-04T10:06:03+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-04T10:11:04+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-04T10:16:56+00:00", "host": "event-pred-standby", "msg": "backup failed", "step": "push", "err": "rver Error        \nremote: Request ID 9434:A7218:709791:7DDDC1:6AEB0608        \nremote: Time 2026-11-04T10:16:56Z\nTo github.com:curiousfun88/event-pred-live.git\n ! [remote rejected] HEAD -> main (Internal Server Error)\nerror: failed to push some refs to 'github.com:curiousfun88/event-pred-live.git'\n"}
+{"t": "2026-11-04T10:16:57+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-04T10:21:58+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

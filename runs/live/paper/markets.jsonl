@@ -8126,10 +8126,10 @@
 {"close_ns": 1793772000000000000, "result": "no", "settled_ns": 1793794200654880000, "status": "finalized", "ticker": "KXHIGHPHIL-26NOV03-B75.5"}
 {"close_ns": 1793772000000000000, "result": "no", "settled_ns": 1793794200654880000, "status": "finalized", "ticker": "KXHIGHPHIL-26NOV03-T69"}
 {"close_ns": 1793772000000000000, "result": "no", "settled_ns": 1793794200654880000, "status": "finalized", "ticker": "KXHIGHPHIL-26NOV03-T76"}
-{"close_ns": 1793858400000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHPHIL-26NOV04-B72.5"}
+{"close_ns": 1793858400000000000, "result": "no", "settled_ns": 1793858400000000000, "status": "determined", "ticker": "KXHIGHPHIL-26NOV04-B72.5"}
 {"close_ns": 1793858400000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHPHIL-26NOV04-B74.5"}
-{"close_ns": 1793858400000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHPHIL-26NOV04-B76.5"}
-{"close_ns": 1793858400000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHPHIL-26NOV04-B78.5"}
+{"close_ns": 1793858400000000000, "result": "no", "settled_ns": 1793858400000000000, "status": "determined", "ticker": "KXHIGHPHIL-26NOV04-B76.5"}
+{"close_ns": 1793858400000000000, "result": "no", "settled_ns": 1793858400000000000, "status": "determined", "ticker": "KXHIGHPHIL-26NOV04-B78.5"}
 {"close_ns": 1793858400000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHPHIL-26NOV04-T72"}
 {"close_ns": 1793858400000000000, "result": "", "settled_ns": null, "status": "closed", "ticker": "KXHIGHPHIL-26NOV04-T79"}
 {"close_ns": 1793944800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXHIGHPHIL-26NOV05-B72.5"}

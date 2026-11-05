@@ -1,9 +1,9 @@
 {
  "start_H": 1792090800000000000,
  "start_stamp": "20261015T19",
- "last_H": 1793851200000000000,
- "last_stamp": "20261105T04",
- "head": "0e038ec0dd87aac25be1ac02a8b620e232272ee7fb86a6db3a7c33f1bc0518a9",
+ "last_H": 1793858400000000000,
+ "last_stamp": "20261105T06",
+ "head": "7873526ebeb4bb48893f83c6db56e0a3a350716a166c18d5e9a91e1fc26f05c9",
  "settled_events": [
   "KXACTBLUETOP-26OCT16",
   "KXALEAGUEGAME-26OCT16SYDWES",

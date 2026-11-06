@@ -54,6 +54,14 @@
 {"close_ns": 1793980800000000000, "result": "no", "settled_ns": 1793980800000000000, "status": "determined", "ticker": "KXAPRPOTUS-26NOV06-38.6"}
 {"close_ns": 1793980800000000000, "result": "no", "settled_ns": 1793980800000000000, "status": "determined", "ticker": "KXAPRPOTUS-26NOV06-38.9"}
 {"close_ns": 1793980800000000000, "result": "yes", "settled_ns": 1793980800000000000, "status": "determined", "ticker": "KXAPRPOTUS-26NOV06-39.1"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-38.0"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-38.2"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-38.5"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-38.8"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-39.1"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-39.4"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-39.7"}
+{"close_ns": 1794585600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXAPRPOTUS-26NOV13-39.9"}
 {"close_ns": 1792162800000000000, "result": "no", "settled_ns": 1792166601782575000, "status": "finalized", "ticker": "KXAPRPOTUS-26OCT16-36.9"}
 {"close_ns": 1792162800000000000, "result": "no", "settled_ns": 1792166601782575000, "status": "finalized", "ticker": "KXAPRPOTUS-26OCT16-37.1"}
 {"close_ns": 1792162800000000000, "result": "no", "settled_ns": 1792166601782575000, "status": "finalized", "ticker": "KXAPRPOTUS-26OCT16-37.4"}

@@ -2742,3 +2742,4 @@
 {"t": "2026-11-09T01:11:31+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-09T01:57:30+00:00", "host": "event-pred-standby", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 261, \"failed\": 62}", "err": ""}
 {"t": "2026-11-09T02:03:21+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261108", "job": "home:fm:wfl-d1d34c01-0d25-4e71-99b5-7910782f9985"}
+{"t": "2026-11-09T12:35:05+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

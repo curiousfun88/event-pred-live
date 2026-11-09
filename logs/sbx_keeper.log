@@ -2728,3 +2728,6 @@
 {"t": "2026-11-08T23:09:04+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-08T23:14:15+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-08T23:19:16+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-08T23:25:08+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-09T00:00:08+00:00", "host": "event-pred-standby", "msg": "fleet backfill error", "error": "TimeoutExpired(['/home/curiouslearner842/venv/bin/python', 'stg_infra/fleet_backfill.py', '--runs', 'runs/live/runs.jsonl', '--ledger', 'runs/live/paper/ledger', '--pat-file', '/home/curiouslearner842/.lumid/lumid_pat'], 1800)"}
+{"t": "2026-11-09T00:00:09+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

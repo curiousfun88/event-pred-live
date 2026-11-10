@@ -2744,3 +2744,5 @@
 {"t": "2026-11-09T02:03:21+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261108", "job": "home:fm:wfl-d1d34c01-0d25-4e71-99b5-7910782f9985"}
 {"t": "2026-11-09T12:35:05+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-10T02:05:22+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261109", "job": "home:fm:wfl-b9cd93bf-70c1-4427-85bf-5206489d0c77"}
+{"t": "2026-11-10T12:05:48+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 503: 'Service Temporarily Unavailable'>"}
+{"t": "2026-11-10T12:10:49+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 503: 'Service Temporarily Unavailable'>"}

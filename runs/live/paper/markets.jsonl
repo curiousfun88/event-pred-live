@@ -7277,11 +7277,11 @@
 {"close_ns": 1793998991000000000, "result": "no", "settled_ns": 1793998991000000000, "status": "determined", "ticker": "KXFEAR-26NOV06-NEUT"}
 {"close_ns": 1793998991000000000, "result": "yes", "settled_ns": 1793998991000000000, "status": "determined", "ticker": "KXFEAR-26NOV06-XFEAR"}
 {"close_ns": 1793998991000000000, "result": "no", "settled_ns": 1793998991000000000, "status": "determined", "ticker": "KXFEAR-26NOV06-XGREE"}
-{"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-FEAR"}
-{"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-GREE"}
-{"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-NEUT"}
-{"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-XFEAR"}
-{"close_ns": 1795208400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV13-XGREE"}
+{"close_ns": 1794604879000000000, "result": "yes", "settled_ns": 1794606679563437000, "status": "finalized", "ticker": "KXFEAR-26NOV13-FEAR"}
+{"close_ns": 1794604879000000000, "result": "no", "settled_ns": 1794606679563437000, "status": "finalized", "ticker": "KXFEAR-26NOV13-GREE"}
+{"close_ns": 1794604879000000000, "result": "no", "settled_ns": 1794606679563437000, "status": "finalized", "ticker": "KXFEAR-26NOV13-NEUT"}
+{"close_ns": 1794604879000000000, "result": "no", "settled_ns": 1794606679563437000, "status": "finalized", "ticker": "KXFEAR-26NOV13-XFEAR"}
+{"close_ns": 1794604879000000000, "result": "no", "settled_ns": 1794606679563437000, "status": "finalized", "ticker": "KXFEAR-26NOV13-XGREE"}
 {"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-FEAR"}
 {"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-GREE"}
 {"close_ns": 1795813200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV20-NEUT"}

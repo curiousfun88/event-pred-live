@@ -1,7 +1,7 @@
 {
- "utc": "2026-11-15T08:24:55+00:00",
+ "utc": "2026-11-15T09:26:34+00:00",
  "host": "event-pred-standby",
- "latest_producer_hour": "20261115T08",
+ "latest_producer_hour": "20261115T09",
  "latest_ledger_entry": "20261115T07",
  "ledger_entries": 733
 }

@@ -4404,6 +4404,9 @@
 {"close_ns": 1792344565000000000, "result": "yes", "settled_ns": 1792344926776622000, "status": "finalized", "ticker": "KXEPLFTTS-26OCT18NFOARS-ARS"}
 {"close_ns": 1792344565000000000, "result": "no", "settled_ns": 1792344926776622000, "status": "finalized", "ticker": "KXEPLFTTS-26OCT18NFOARS-NFO"}
 {"close_ns": 1792344565000000000, "result": "no", "settled_ns": 1792344926776622000, "status": "finalized", "ticker": "KXEPLFTTS-26OCT18NFOARS-NONE"}
+{"close_ns": 1796328000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXEPLGAME-26DEC01COVIPS-COV"}
+{"close_ns": 1796328000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXEPLGAME-26DEC01COVIPS-IPS"}
+{"close_ns": 1796328000000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXEPLGAME-26DEC01COVIPS-TIE"}
 {"close_ns": 1793557602000000000, "result": "yes", "settled_ns": 1793557663730893000, "status": "finalized", "ticker": "KXEPLGAME-26NOV01LFCARS-ARS"}
 {"close_ns": 1793557602000000000, "result": "no", "settled_ns": 1793557663730893000, "status": "finalized", "ticker": "KXEPLGAME-26NOV01LFCARS-LFC"}
 {"close_ns": 1793557602000000000, "result": "no", "settled_ns": 1793557663730893000, "status": "finalized", "ticker": "KXEPLGAME-26NOV01LFCARS-TIE"}

@@ -2778,3 +2778,4 @@
 {"t": "2026-11-20T02:00:20+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261119", "job": "home:fm:wfl-ff6a312d-8524-4136-926a-ab6cef78dba0"}
 {"t": "2026-11-20T12:29:40+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-21T02:05:05+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261120", "job": "home:fm:wfl-0cc7c3c1-d2ae-431b-8313-d8e90d124f22"}
+{"t": "2026-11-21T05:05:59+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

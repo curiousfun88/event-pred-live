@@ -12064,9 +12064,9 @@
 {"close_ns": 1795463100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21LILOL-LIL"}
 {"close_ns": 1795463100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21LILOL-OL"}
 {"close_ns": 1795463100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21LILOL-TIE"}
-{"close_ns": 1795450500000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21NICPSG-NIC"}
-{"close_ns": 1795450500000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21NICPSG-PSG"}
-{"close_ns": 1795450500000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21NICPSG-TIE"}
+{"close_ns": 1795285262000000000, "result": "no", "settled_ns": 1795285324155543000, "status": "finalized", "ticker": "KXLIGUE1GAME-26NOV21NICPSG-NIC"}
+{"close_ns": 1795285262000000000, "result": "yes", "settled_ns": 1795285324155543000, "status": "finalized", "ticker": "KXLIGUE1GAME-26NOV21NICPSG-PSG"}
+{"close_ns": 1795285262000000000, "result": "no", "settled_ns": 1795285324155543000, "status": "finalized", "ticker": "KXLIGUE1GAME-26NOV21NICPSG-TIE"}
 {"close_ns": 1795463100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21RCLTFC-RCL"}
 {"close_ns": 1795463100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21RCLTFC-TFC"}
 {"close_ns": 1795463100000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXLIGUE1GAME-26NOV21RCLTFC-TIE"}

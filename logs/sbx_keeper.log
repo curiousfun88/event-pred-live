@@ -2842,3 +2842,6 @@
 {"t": "2026-11-22T08:46:28+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-22T08:51:44+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-22T08:56:45+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-22T09:02:32+00:00", "host": "event-pred-standby", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 0, \"failed\": 13, \"deferred\": false, \"checked_ok\": 634, \"reposting_lost\": 0}", "err": ""}
+{"t": "2026-11-22T09:02:33+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
+{"t": "2026-11-22T09:07:34+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}

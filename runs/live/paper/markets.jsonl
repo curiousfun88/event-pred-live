@@ -13734,6 +13734,9 @@
 {"close_ns": 1795389831000000000, "result": "yes", "settled_ns": 1795389894169905000, "status": "finalized", "ticker": "KXMLSGAME-26NOV22NSHCIN-CIN"}
 {"close_ns": 1795389831000000000, "result": "no", "settled_ns": 1795389894169905000, "status": "finalized", "ticker": "KXMLSGAME-26NOV22NSHCIN-NSH"}
 {"close_ns": 1795389831000000000, "result": "no", "settled_ns": 1795389894169905000, "status": "finalized", "ticker": "KXMLSGAME-26NOV22NSHCIN-TIE"}
+{"close_ns": 1795404940000000000, "result": "no", "settled_ns": 1795405004175657000, "status": "finalized", "ticker": "KXMLSGAME-26NOV22VANRSL-RSL"}
+{"close_ns": 1795404940000000000, "result": "no", "settled_ns": 1795405004175657000, "status": "finalized", "ticker": "KXMLSGAME-26NOV22VANRSL-TIE"}
+{"close_ns": 1795404940000000000, "result": "yes", "settled_ns": 1795405004175657000, "status": "finalized", "ticker": "KXMLSGAME-26NOV22VANRSL-VAN"}
 {"close_ns": 1795654800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26NOV23STLLAFC-LAFC"}
 {"close_ns": 1795654800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26NOV23STLLAFC-STL"}
 {"close_ns": 1795654800000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXMLSGAME-26NOV23STLLAFC-TIE"}

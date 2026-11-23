@@ -7511,6 +7511,11 @@
 {"close_ns": 1797627600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC11-NEUT"}
 {"close_ns": 1797627600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC11-XFEAR"}
 {"close_ns": 1797627600000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC11-XGREE"}
+{"close_ns": 1798232400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC18-FEAR"}
+{"close_ns": 1798232400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC18-GREE"}
+{"close_ns": 1798232400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC18-NEUT"}
+{"close_ns": 1798232400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC18-XFEAR"}
+{"close_ns": 1798232400000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26DEC18-XGREE"}
 {"close_ns": 1793998991000000000, "result": "no", "settled_ns": 1793998991000000000, "status": "determined", "ticker": "KXFEAR-26NOV06-FEAR"}
 {"close_ns": 1793998991000000000, "result": "no", "settled_ns": 1793998991000000000, "status": "determined", "ticker": "KXFEAR-26NOV06-GREE"}
 {"close_ns": 1793998991000000000, "result": "no", "settled_ns": 1793998991000000000, "status": "determined", "ticker": "KXFEAR-26NOV06-NEUT"}

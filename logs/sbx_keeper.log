@@ -2853,3 +2853,4 @@
 {"t": "2026-11-23T15:04:42+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-24T01:37:09+00:00", "host": "event-pred-standby", "msg": "fleet backfill error", "error": "TimeoutExpired(['/home/curiouslearner842/venv/bin/python', 'stg_infra/fleet_backfill.py', '--runs', 'runs/live/runs.jsonl', '--ledger', 'runs/live/paper/ledger', '--pat-file', '/home/curiouslearner842/.lumid/lumid_pat'], 1800)"}
 {"t": "2026-11-24T02:04:16+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261123", "job": "home:fm:wfl-eeb31a2b-d9c1-4216-894f-104a41e12451"}
+{"t": "2026-11-24T14:38:27+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}

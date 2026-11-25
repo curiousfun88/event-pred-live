@@ -2857,3 +2857,4 @@
 {"t": "2026-11-24T22:06:57+00:00", "host": "event-pred-standby", "msg": "keeper started", "sandbox": "event-pred-standby", "wait_for": null}
 {"t": "2026-11-24T22:06:57+00:00", "host": "event-pred-standby", "msg": "watchdog: producer not running; starting it"}
 {"t": "2026-11-24T22:06:57+00:00", "host": "event-pred-standby", "msg": "watchdog: paper trader not running; starting it"}
+{"t": "2026-11-25T02:02:32+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261124", "job": "home:fm:wfl-c77a8588-223b-4694-9f60-dd6ade25fb35"}

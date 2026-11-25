@@ -2860,3 +2860,4 @@
 {"t": "2026-11-25T02:02:32+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261124", "job": "home:fm:wfl-c77a8588-223b-4694-9f60-dd6ade25fb35"}
 {"t": "2026-11-25T03:29:34+00:00", "host": "event-pred-standby", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 0, \"failed\": 1, \"deferred\": false, \"checked_ok\": 713, \"reposting_lost\": 0}", "err": ""}
 {"t": "2026-11-25T04:33:01+00:00", "host": "event-pred-standby", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 0, \"failed\": 5, \"deferred\": false, \"checked_ok\": 713, \"reposting_lost\": 0}", "err": ""}
+{"t": "2026-11-25T05:36:31+00:00", "host": "event-pred-standby", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 0, \"failed\": 6, \"deferred\": false, \"checked_ok\": 713, \"reposting_lost\": 0}", "err": ""}

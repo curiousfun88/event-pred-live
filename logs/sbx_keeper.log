@@ -2874,3 +2874,4 @@
 {"t": "2026-11-26T13:32:04+00:00", "host": "event-pred-standby", "msg": "fleet backfill incomplete", "rc": 0, "last": "{\"posted\": 0, \"failed\": 2, \"deferred\": false, \"checked_ok\": 756, \"reposting_lost\": 0}", "err": ""}
 {"t": "2026-11-26T13:32:05+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
 {"t": "2026-11-26T13:38:05+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}
+{"t": "2026-11-26T21:10:48+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}

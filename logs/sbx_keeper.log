@@ -2881,3 +2881,4 @@
 {"t": "2026-11-27T02:02:07+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261126", "job": "home:fm:wfl-d854fb80-a65a-4fb9-8839-e87d92ac5447"}
 {"t": "2026-11-27T06:28:48+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 500: 'Internal Server Error'>"}
 {"t": "2026-11-27T06:34:06+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 500: 'Internal Server Error'>"}
+{"t": "2026-11-27T09:58:40+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}

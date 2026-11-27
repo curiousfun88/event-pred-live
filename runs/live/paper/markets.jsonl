@@ -7612,11 +7612,11 @@
 {"close_ns": 1795209242000000000, "result": "no", "settled_ns": 1795211044199870000, "status": "finalized", "ticker": "KXFEAR-26NOV20-NEUT"}
 {"close_ns": 1795209242000000000, "result": "yes", "settled_ns": 1795211044199870000, "status": "finalized", "ticker": "KXFEAR-26NOV20-XFEAR"}
 {"close_ns": 1795209242000000000, "result": "no", "settled_ns": 1795211044199870000, "status": "finalized", "ticker": "KXFEAR-26NOV20-XGREE"}
-{"close_ns": 1796407200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV27-FEAR"}
-{"close_ns": 1796407200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV27-GREE"}
-{"close_ns": 1796407200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV27-NEUT"}
-{"close_ns": 1796407200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV27-XFEAR"}
-{"close_ns": 1796407200000000000, "result": "", "settled_ns": null, "status": "active", "ticker": "KXFEAR-26NOV27-XGREE"}
+{"close_ns": 1795818449000000000, "result": "no", "settled_ns": 1795820250901236000, "status": "finalized", "ticker": "KXFEAR-26NOV27-FEAR"}
+{"close_ns": 1795818449000000000, "result": "no", "settled_ns": 1795820250901236000, "status": "finalized", "ticker": "KXFEAR-26NOV27-GREE"}
+{"close_ns": 1795818449000000000, "result": "no", "settled_ns": 1795820250901236000, "status": "finalized", "ticker": "KXFEAR-26NOV27-NEUT"}
+{"close_ns": 1795818449000000000, "result": "yes", "settled_ns": 1795820250901236000, "status": "finalized", "ticker": "KXFEAR-26NOV27-XFEAR"}
+{"close_ns": 1795818449000000000, "result": "no", "settled_ns": 1795820250901236000, "status": "finalized", "ticker": "KXFEAR-26NOV27-XGREE"}
 {"close_ns": 1792203962000000000, "result": "no", "settled_ns": 1792205766780326000, "status": "finalized", "ticker": "KXFEAR-26OCT16-FEAR"}
 {"close_ns": 1792203962000000000, "result": "no", "settled_ns": 1792205766780326000, "status": "finalized", "ticker": "KXFEAR-26OCT16-GREE"}
 {"close_ns": 1792203962000000000, "result": "no", "settled_ns": 1792205766780326000, "status": "finalized", "ticker": "KXFEAR-26OCT16-NEUT"}

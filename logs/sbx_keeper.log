@@ -2890,3 +2890,4 @@
 {"t": "2026-11-28T02:02:41+00:00", "host": "event-pred-standby", "msg": "daily summary posted", "day": "20261127", "job": "office:fm:wfl-2a8bc3c4-2fd0-4214-aade-b0eddabd8c28"}
 {"t": "2026-11-28T03:46:18+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}
 {"t": "2026-11-28T06:53:12+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "TimeoutError('The read operation timed out')"}
+{"t": "2026-11-28T07:04:11+00:00", "host": "event-pred-standby", "msg": "keeper error", "error": "<HTTPError 502: 'Bad Gateway'>"}
